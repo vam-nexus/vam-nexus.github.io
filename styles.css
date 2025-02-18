@@ -54,11 +54,11 @@ body {
     border-radius: 0.5rem;
 }
 
-.slider-container {
+.slider-container, .bottom-slider-container {
     width: 100%;
     max-width: 800px;
     background: white;
-    padding: 1rem 2rem;
+    padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -77,6 +77,7 @@ body {
     background: #E5E7EB;
     outline: none;
     border-radius: 2px;
+    margin: 1rem 0;
 }
 
 .slider::-webkit-slider-thumb {
@@ -219,73 +220,36 @@ h1 {
     cursor: not-allowed;
 }
 
-/* Bottom slider styles */
-.bottom-slider-container {
-    width: 80%;
-    margin: 2rem auto;
-    background: #F3F4F6;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Achievement box styles */
-.achievement-box {
-    background: #F3F4F6;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-}
-
-.achievement-box h3 {
-    color: #1F2937;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Setup checklist styles */
-.setup-checklist {
-    background: #F3F4F6;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-}
-
-.setup-checklist h3 {
-    color: #1F2937;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.setup-checklist ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-.setup-checklist li {
-    margin-bottom: 0.5rem;
-}
-
-/* Responsive styles */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
     body {
         padding: 0.5rem;
     }
 
+    h1 {
+        font-size: 1.5rem;
+        padding: 0 1rem;
+    }
+
     .module-container,
-    .slider-container {
-        padding: 1rem;
-        margin-bottom: 1rem;
+    .slider-container,
+    .bottom-slider-container {
         width: 100%;
+        padding: 1rem;
+        margin: 0.5rem auto;
         border-radius: 0.5rem;
     }
 
-    .nav-button {
-        padding: 1rem 1.5rem;
-        min-height: 48px;
+    .button-container {
+        width: 100%;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .slider {
+        width: calc(100% - 2rem);
+        margin: 0.5rem 1rem;
     }
 
     .slider::-webkit-slider-thumb {
@@ -293,41 +257,50 @@ h1 {
         height: 24px;
     }
 
-    .quiz-options label {
-        padding: 0.75rem;
+    .chapter-indicator {
+        font-size: 0.875rem;
         margin: 0.5rem 0;
-        background: #F3F4F6;
-        border-radius: 0.5rem;
-        display: block;
-    }
-
-    .quiz-options input[type="radio"] {
-        margin-right: 1rem;
-        transform: scale(1.2);
-    }
-
-    .submit-answer {
-        padding: 0.75rem 1.5rem;
-        width: 100%;
-        margin-top: 1rem;
-    }
-
-    .post-section p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    .button-container {
-        width: 100%;
-        flex-direction: column;
-        gap: 0.75rem;
     }
 
     .nav-button {
         width: 100%;
+        min-height: 48px;
+        margin: 0;
+    }
+
+    /* Improve quiz display on mobile */
+    .quiz-container {
+        padding: 1rem;
+    }
+
+    .quiz-options label {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+    }
+
+    /* Improve checklist display on mobile */
+    .checklist-item {
+        font-size: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    /* Adjust blog post content for mobile */
+    .post-section {
+        padding: 0 0.5rem;
+    }
+
+    .post-section h2 {
+        font-size: 1.25rem;
+    }
+
+    .post-section p {
+        font-size: 1rem;
+    }
+
+    /* Achievement box and setup checklist adjustments */
+    .achievement-box,
+    .setup-checklist {
+        padding: 1rem;
+        margin: 0.5rem 0;
     }
 }
