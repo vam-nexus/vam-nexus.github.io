@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Python 101 Prep Manual</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 style="text-align: center; color: white; font-family: monospace; margin-bottom: 2rem;">AI Python 101: A Crash Course (Prep Manual)</h1>
+
+    <div class="slider-container">
+        <input type="range" 
+               min="1" 
+               max="9" 
+               value="1" 
+               class="slider" 
+               id="chapterSlider">
+        <div class="chapter-indicator">
+            Chapter <span id="currentChapter">1</span> of 9
+        </div>
+    </div>
+
+    <div class="module-container">
+        <div id="chapterContent"></div>
+
+        <div class="button-container">
+            <button id="prevButton" class="nav-button">Previous Chapter</button>
+            <button id="nextButton" class="nav-button">Next Chapter</button>
+        </div>
+
+        <div class="bottom-slider-container">
+            <input type="range" 
+                   min="1" 
+                   max="9" 
+                   value="1" 
+                   class="slider" 
+                   id="bottomChapterSlider">
+            <div class="chapter-indicator">
+                Chapter <span id="bottomCurrentChapter">1</span> of 9
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chapters = [
+            {
+                title: "Preparation Guide for AI Python Course",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Complete These Tasks Before Starting</h2>
+                            <p>Before you begin the AI Python 101 crash course, it's important to go through some preparation steps. This guide outlines everything you need to do to ensure a smooth learning experience and get the most out of the course.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Course Overview</h2>
+                            <p>Welcome to the AI Python 101 crash course! This beginner-friendly program is designed to introduce you to Python programming and essential tools used in AI development. To make the most of your learning, we recommend completing some foundational tasks before diving in.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What You'll Achieve by the End of This Course</h2>
+                            <div class="achievement-box" style="background: #F3F4F6; padding: 1.5rem; border-radius: 0.5rem; margin: 1rem 0;">
+                                <h3>1. Python Programming</h3>
+                                <p>You'll be able to write Python code using proper syntax, data structures, and basic algorithms to solve problems efficiently.</p>
+                                
+                                <h3>2. Google Colab</h3>
+                                <p>You'll learn how to use Google Colab to execute Python code, collaborate with peers, and streamline your workflow in an interactive coding environment.</p>
+                                
+                                <h3>3. Cursor AI</h3>
+                                <p>You'll leverage AI-assisted coding tools like Cursor AI to enhance your productivity and learning experience.</p>
+                                
+                                <h3>4. Discord Community Engagement</h3>
+                                <p>You'll become familiar with using Discord to engage with a community for support, collaboration, and knowledge sharing.</p>
+                                
+                                <h3>5. OpenAI & Hugging Face</h3>
+                                <p>You'll explore and utilize advanced AI models for tasks such as text generation, data analysis, and AI-powered applications.</p>
+                                
+                                <h3>6. UI Development</h3>
+                                <p>You'll learn how to create intuitive and user-friendly interfaces for AI applications.</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Required Tools and Setup</h2>
+                            <div class="setup-checklist">
+                                <h3>Essential Accounts</h3>
+                                <ul>
+                                    <li><input type="checkbox"> Google Account (for Google Colab)</li>
+                                    <li><input type="checkbox"> Discord Account (for community support)</li>
+                                    <li><input type="checkbox"> GitHub Account (optional, for code sharing)</li>
+                                </ul>
+
+                                <h3>Recommended Browsers</h3>
+                                <ul>
+                                    <li>Google Chrome (preferred)</li>
+                                    <li>Mozilla Firefox</li>
+                                    <li>Microsoft Edge</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What tools will you learn to use in this course?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> A) Only Python</label>
+                                        <label><input type="radio" name="q1" value="b"> B) Python, Google Colab, and AI tools</label>
+                                        <label><input type="radio" name="q1" value="c"> C) Just AI models</label>
+                                        <label><input type="radio" name="q1" value="d"> D) Only web development</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q1', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q1"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. Which account is essential for this course?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> A) Twitter account</label>
+                                        <label><input type="radio" name="q2" value="b"> B) Google account</label>
+                                        <label><input type="radio" name="q2" value="c"> C) Facebook account</label>
+                                        <label><input type="radio" name="q2" value="d"> D) Instagram account</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q2', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q2"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What is the purpose of Discord in this course?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> A) Playing games</label>
+                                        <label><input type="radio" name="q3" value="b"> B) Community support and collaboration</label>
+                                        <label><input type="radio" name="q3" value="c"> C) Watching videos</label>
+                                        <label><input type="radio" name="q3" value="d"> D) Running Python code</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q3', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q3"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>Once you've completed the preparation steps, you'll be ready to begin Chapter 1: Introduction to Python Programming. Make sure you have:</p>
+                            <ul>
+                                <li><strong>Created all required accounts</strong></li>
+                                <li><strong>Installed a recommended browser</strong></li>
+                                <li><strong>Bookmarked important course resources</strong></li>
+                            </ul>
+                            <p>Let's begin your journey into AI-powered Python programming!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "The Role of Python in AI",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Why Learn to Code?</h2>
+                            <p>Artificial Intelligence (AI) is changing the way we work and interact with technology. Today, learning to code is no longer just for software engineers. People in many professions—such as journalism, marketing, business, and administration—find that even a small amount of programming knowledge can make them more effective and productive. This book introduces Python, a simple and powerful programming language, and explores its role in AI.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>How AI is Changing Coding</h2>
+                            <p>In the past, learning to code required years of study and practice. It involved memorizing syntax, understanding algorithms, and writing programs from scratch. However, AI-powered tools like ChatGPT are making it easier to learn and write code. With AI as an assistant, beginners can get instant feedback, generate code snippets, and find errors quickly. These tools lower the barriers to coding, making it more accessible to everyone.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Why Python for AI?</h2>
+                            <p>Python is one of the most widely used programming languages, especially in AI and data science. It is known for its simple syntax, readability, and vast collection of libraries that support machine learning, automation, and data analysis. Because of its ease of use and flexibility, Python is the best choice for those who want to get started with AI.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>The Power of AI-Assisted Learning</h2>
+                            <p>AI is transforming how people learn to code. Instead of relying only on textbooks and structured courses, learners can now use AI-powered coding assistants. These tools help beginners write better code, understand concepts faster, and solve problems more efficiently. AI-assisted learning makes it possible for anyone to gain coding skills, even without a traditional computer science background.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>The Benefits of Learning Python</h2>
+                            <p>Knowing how to code—even at a basic level—can be a significant advantage. It allows people to automate repetitive tasks, analyze data, and build AI-powered applications. Coding also develops problem-solving skills and logical thinking, which are valuable in any field. Plus, many people find programming to be a fun and creative activity.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. Why is Python particularly well-suited for AI development?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q1" value="a"> A) It's the newest programming language</label>
+                                        <label><input type="radio" name="q1" value="b"> B) It has simple syntax, readability, and vast AI libraries</label>
+                                        <label><input type="radio" name="q1" value="c"> C) It's the fastest programming language</label>
+                                        <label><input type="radio" name="q1" value="d"> D) It was specifically designed for AI</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q1', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q1">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. How are AI-powered tools changing the way people learn to code?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q2" value="a"> A) They replace human teachers entirely</label>
+                                        <label><input type="radio" name="q2" value="b"> B) They write all the code for you</label>
+                                        <label><input type="radio" name="q2" value="c"> C) They provide instant feedback and help find errors quickly</label>
+                                        <label><input type="radio" name="q2" value="d"> D) They make coding more complicated</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q2', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q2">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What is one of the main benefits of learning to code mentioned in the chapter?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q3" value="a"> A) Becoming a full-time programmer</label>
+                                        <label><input type="radio" name="q3" value="b"> B) Making video games</label>
+                                        <label><input type="radio" name="q3" value="c"> C) Automating repetitive tasks and analyzing data</label>
+                                        <label><input type="radio" name="q3" value="d"> D) Learning computer hardware</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q3', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q3">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>In the next chapter, we will explore the fundamentals of programming languages and how they allow us to communicate with computers. By learning Python, you will gain the skills to work with AI and unlock new opportunities in your career and personal projects.</p>
+                            <p>Let's begin the journey into Python and AI!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "The Power of Programming and AI with Python",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Introduction to Programming</h2>
+                            <p>Computer programming is both an art and a science—it involves writing precise instructions that tell a computer what to do. When instructions are written effectively, computers can automate tasks, analyze data, and even assist with decision-making.</p>
+                            <p>Programming has transformed our daily lives in ways we often take for granted:</p>
+                            <ul>
+                                <li>GPS navigation systems help us find our way.</li>
+                                <li>Assistive technologies like speech recognition and eye tracking improve accessibility.</li>
+                                <li>AI-powered applications make tasks like customer support and data analysis more efficient.</li>
+                            </ul>
+                            <p>Every time you send a message, browse the internet, or use an app, you're interacting with code that someone wrote. Learning to program will allow you to harness this power and create your own tools.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Why Learn to Code?</h2>
+                            <p>Coding is more than just a technical skill—it's a way to <strong>increase efficiency</strong>, <strong>solve problems</strong>, and <strong>automate repetitive tasks</strong>. Many professionals, from business analysts to scientists, use programming daily to improve their workflows.</p>
+                            <p>Here are some real-world examples of how coding drives innovation:</p>
+                            <ul>
+                                <li><strong>Scientific Discoveries:</strong> The Hubble Space Telescope and the discovery of the Higgs boson were made possible by software that processes vast amounts of data.</li>
+                                <li><strong>Business & Productivity:</strong> Automating tasks such as extracting data from PDFs and organizing information into spreadsheets saves time and reduces errors.</li>
+                                <li><strong>AI & Machine Learning:</strong> AI models like ChatGPT are trained using massive datasets, and Python plays a crucial role in this development.</li>
+                            </ul>
+                            <p>By learning to program, you're not just gaining a skill—you're opening doors to limitless possibilities.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Automating Tasks with AI</h2>
+                            <p>One of the most exciting aspects of modern programming is the ability to <strong>integrate AI into your projects</strong>. AI tools like ChatGPT, Claude, and Google's Gemini allow computers to:</p>
+                            <ul>
+                                <li><strong>Automatically process and summarize information</strong></li>
+                                <li><strong>Respond to queries and assist with customer support</strong></li>
+                                <li><strong>Generate reports and analyze business trends</strong></li>
+                            </ul>
+                            <p>With just a few lines of Python code, you can instruct your computer to use these AI models, making your work smarter and more efficient.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Python: The Most Popular Programming Language</h2>
+                            <p>Python has become the <strong>#1 choice for AI development</strong>, and for good reason:</p>
+                            <ul>
+                                <li><strong>Easy to learn:</strong> Python's simple syntax makes it accessible to beginners.</li>
+                                <li><strong>Powerful and flexible:</strong> It's used in web development, automation, AI, and data science.</li>
+                                <li><strong>Strong community support:</strong> With millions of Python developers worldwide, help is always available.</li>
+                            </ul>
+                            <p>If you ever run into an issue, chatbots like ChatGPT and AI assistants can guide you, making learning even more accessible.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Python in Real-World Applications</h2>
+                            <p>Python is already <strong>powering the future</strong>. It is used in:</p>
+                            <ul>
+                                <li><strong>Self-driving cars</strong>, where AI-powered software makes split-second driving decisions.</li>
+                                <li><strong>Smart agriculture</strong>, optimizing irrigation and crop health.</li>
+                                <li><strong>Healthcare</strong>, assisting doctors with diagnosing diseases.</li>
+                                <li><strong>Financial services</strong>, detecting fraud and automating transactions.</li>
+                                <li><strong>Web applications, mobile apps, and video games</strong>, making development faster and more efficient.</li>
+                            </ul>
+                            <p>By mastering Python, you'll gain one of the most <strong>valuable and versatile skills in technology</strong>.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What are some real-world applications of Python mentioned in the chapter?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q4" value="a"> A) Only web development</label>
+                                        <label><input type="radio" name="q4" value="b"> B) Self-driving cars, healthcare, and financial services</label>
+                                        <label><input type="radio" name="q4" value="c"> C) Just mobile apps</label>
+                                        <label><input type="radio" name="q4" value="d"> D) Only video games</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q4', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q4">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. Why has Python become the #1 choice for AI development?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q5" value="a"> A) It's the only language that supports AI</label>
+                                        <label><input type="radio" name="q5" value="b"> B) It's the oldest programming language</label>
+                                        <label><input type="radio" name="q5" value="c"> C) Easy to learn, powerful, and has strong community support</label>
+                                        <label><input type="radio" name="q5" value="d"> D) It's required by law</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q5', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q5">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. How does programming contribute to scientific discoveries?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q6" value="a"> A) It doesn't contribute to science</label>
+                                        <label><input type="radio" name="q6" value="b"> B) By processing vast amounts of data</label>
+                                        <label><input type="radio" name="q6" value="c"> C) By replacing scientists</label>
+                                        <label><input type="radio" name="q6" value="d"> D) Only through documentation</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q6', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q6">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Moving Forward</h2>
+                            <p>This course, <strong>AI Python for Beginners</strong>, is just your first step. As you continue, you'll:</p>
+                            <ul>
+                                <li><strong>Write more complex programs</strong></li>
+                                <li><strong>Develop AI-powered applications</strong></li>
+                                <li><strong>Enhance your problem-solving skills with automation</strong></li>
+                            </ul>
+                            <h3>Next Up: How Chatbots Interact with Python</h3>
+                            <p>In the next chapter, we'll explore how Python enables AI-powered chatbots to understand, process, and respond to human language. Get ready to build your own AI-powered tools!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "Writing Code with Chatbots",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Introduction to Writing Code with AI Chatbots</h2>
+                            <p>In our daily work, programmers increasingly rely on AI chatbots to assist with coding tasks. These tools make us more productive by providing quick answers to our programming questions, eliminating the need to search for an expert or sift through documentation.</p>
+                            <p>Previously, if we were stuck with a programming task or unsure what to do next, we might have had to find an expert to ask. This process could take time—finding someone available, explaining the issue, and waiting for a response. However, now, whenever we have a question, we can ask an AI chatbot and get an answer immediately.</p>
+                            <p>For this course, we've provided a chatbot that allows us to type our programming questions—also known as prompts—directly into it. While we have this chatbot available, feel free to use third-party chatbots like ChatGPT, Microsoft Copilot, Anthropic Claude, or Google Gemini for additional help.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Understanding Prompts and Responses</h2>
+                            <p>When using a chatbot for coding, the text we enter is called a <strong>prompt</strong>, and the chatbot's answer is known as a <strong>completion</strong>.</p>
+                            <p>For example, if we type the prompt:</p>
+                            <p><strong>"What is Python?"</strong></p>
+                            <p>The chatbot responds:</p>
+                            <p><em>"Python is a high-level programming language that is easy to read and write, making it a great choice for beginners."</em></p>
+                            <p>If we want to learn more about syntax, we can enter:</p>
+                            <p><strong>"What does syntax mean?"</strong></p>
+                            <p>The chatbot will then generate an explanation, helping us grasp the fundamental concepts of coding more quickly.</p>
+                            <p>We can also ask follow-up questions if something isn't clear. This workflow—asking questions, receiving answers, and refining our understanding—is an approach that even experienced developers use when learning new programming concepts.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Writing Your First Program with a Chatbot</h2>
+                            <p>A common starting point in programming is writing the <strong>"Hello, World!"</strong> program. Traditionally, new programmers begin their journey by writing a simple program that prints "Hello, World!" to the screen.</p>
+                            <p>Let's ask the chatbot:</p>
+                            <p><strong>"What is the first program traditionally written by brand-new programmers?"</strong></p>
+                            <p>The chatbot responds:</p>
+                            <p><em>"The simple program traditionally written by beginners is the 'Hello, World!' program. This program displays the text 'Hello, World!' on the screen."</em></p>
+                            <p>Now, let's use the chatbot to write this program for us. We type the prompt:</p>
+                            <p><strong>"Write a Python program to print 'Hello, World!'"</strong></p>
+                            <p>The chatbot generates:</p>
+                            <pre><code class="language-python">print("Hello, World!")</code></pre>
+                            <p>This tells the computer to print the message "Hello, World!" to the screen.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Modifying Code with Chatbots</h2>
+                            <p>One powerful feature of chatbots is their ability to modify code. Suppose we want our program to say hello to us by name instead of "Hello, World!".</p>
+                            <p>We can prompt the chatbot:</p>
+                            <p><strong>"Modify the code to say hello to me instead of the world. My name is Andrew."</strong></p>
+                            <p>The chatbot generates:</p>
+                            <pre><code class="language-python">print("Hello, Andrew!")</code></pre>
+                            <p>This simple interaction demonstrates how chatbots can help customize code quickly, making coding more interactive and efficient.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Writing More Complex Programs</h2>
+                            <p>Chatbots are not limited to simple "Hello, World!" programs. They can also generate more complex code. For example, let's write a program that calculates the number of days between two dates.</p>
+                            <p>We ask the chatbot:</p>
+                            <p><strong>"Write some code to calculate how many days there are between Christmas (December 25th) and my birthday (April 18th) in a non-leap year."</strong></p>
+                            <p>The chatbot generates:</p>
+                            <pre><code class="language-python">from datetime import date
+
+# Define dates
+christmas = date(2025, 12, 25)
+birthday = date(2026, 4, 18)
+
+# Calculate difference
+days_between = (birthday - christmas).days
+
+print(f"There are {days_between} days between Christmas and your birthday.")</code></pre>
+                            <p>This program calculates the number of days between two dates using Python's datetime module.</p>
+                            <p>We can also prompt the chatbot to modify the program for different holidays or birthdays, making it flexible for various use cases.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>The Limitations of AI-Generated Code</h2>
+                            <p>While AI chatbots are excellent at writing simple programs, they struggle with highly complex or specialized coding tasks. They can generate snippets of code efficiently, but for large-scale applications, human oversight is necessary.</p>
+                            <p>AI excels at:</p>
+                            <ul>
+                                <li>✅ Generating quick code snippets</li>
+                                <li>✅ Explaining programming concepts</li>
+                                <li>✅ Debugging simple errors</li>
+                            </ul>
+                            <p>However, AI may struggle with:</p>
+                            <ul>
+                                <li>⚠️ Writing highly complex or optimized algorithms</li>
+                                <li>⚠️ Understanding business-specific logic</li>
+                                <li>⚠️ Debugging deep structural issues in large projects</li>
+                            </ul>
+                            <p>It is essential to verify AI-generated code for accuracy, efficiency, and security before using it in production.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Running AI-Generated Code</h2>
+                            <p>Chatbots don't just help us write code—they can also guide us on running the code. For example, after generating a Python script, we might ask:</p>
+                            <p><strong>"How do I run this Python program?"</strong></p>
+                            <p>The chatbot would typically respond with instructions like:</p>
+                            <ol>
+                                <li>Open a terminal or command prompt.</li>
+                                <li>Navigate to the directory where the script is saved.</li>
+                                <li>Run the command:</li>
+                            </ol>
+                            <pre><code class="language-bash">python script.py</code></pre>
+                            <p>The program will execute, displaying the output in the terminal.</p>
+                            <p>In future lessons, we will not only write code with chatbots but also execute it, making programming a fully interactive experience.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What is the term for the text we enter into a chatbot?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q7" value="a"> A) Code</label>
+                                        <label><input type="radio" name="q7" value="b"> B) Prompt</label>
+                                        <label><input type="radio" name="q7" value="c"> C) Response</label>
+                                        <label><input type="radio" name="q7" value="d"> D) Query</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q7', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q7">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. What is traditionally the first program written by new programmers?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q8" value="a"> A) Calculator program</label>
+                                        <label><input type="radio" name="q8" value="b"> B) Hello, World!</label>
+                                        <label><input type="radio" name="q8" value="c"> C) Date calculator</label>
+                                        <label><input type="radio" name="q8" value="d"> D) Name printer</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q8', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q8">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. Which of the following is NOT a strength of AI chatbots in coding?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q9" value="a"> A) Generating quick code snippets</label>
+                                        <label><input type="radio" name="q9" value="b"> B) Explaining programming concepts</label>
+                                        <label><input type="radio" name="q9" value="c"> C) Writing highly complex algorithms</label>
+                                        <label><input type="radio" name="q9" value="d"> D) Debugging simple errors</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q9', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q9">
+                                        <p class="result"></p>
+                                        <p class="explanation"></p>
+                                        <p class="citation"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>In Chapter 4, we'll dive into the practical aspects of working with Python and AI. You'll learn:</p>
+                            <ul>
+                                <li><strong>How to set up your development environment</strong></li>
+                                <li><strong>Ways to execute AI-generated code safely</strong></li>
+                                <li><strong>Best practices for testing and debugging</strong></li>
+                            </ul>
+                            <p>Get ready to turn your theoretical knowledge into practical coding skills!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "Navigating the Learning Platform",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Overview of the Learning Platform</h2>
+                            <p>The learning platform is designed to provide an interactive experience where you can watch instructional videos, write and run Python code, and track your progress. Let's take a look at some key features of the platform.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Key Sections of the Learning Platform</h2>
+                            <p>The platform consists of three main sections:</p>
+                            <ul>
+                                <li><strong>Navigation Pane:</strong> Located on the left side of the screen, this pane allows you to access different lessons and track your progress. You can open or close this panel as needed.</li>
+                                <li><strong>Coding Environment:</strong> The middle section is where you can write and execute Python code. This environment uses a Jupyter Notebook, a widely used tool for data science and AI development.</li>
+                                <li><strong>Video Player:</strong> On the right side, you will find the video player, where you can watch course lessons and demonstrations.</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Interacting with Videos</h2>
+                            <p>Videos are a key part of this course, and you have several options to control playback:</p>
+                            <ul>
+                                <li><strong>Play/Pause:</strong> Click the play button to start or pause the video at any time.</li>
+                                <li><strong>Speed Control:</strong> Adjust the playback speed under settings if you want to slow down or speed up the video.</li>
+                                <li><strong>Picture-in-Picture Mode:</strong> You can move the video to a smaller pop-up window while working on your code.</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Using the Coding Environment</h2>
+                            <p>To practice coding, follow these steps:</p>
+                            <ol>
+                                <li>Click inside the coding area to place your cursor.</li>
+                                <li>Paste code from the chatbot or write your own.</li>
+                                <li>Use <code>Shift + Enter</code> to run a code cell.</li>
+                                <li>Observe the output and make necessary changes to improve your code.</li>
+                            </ol>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Saving Your Work</h2>
+                            <p>It's important to note that your work is saved temporarily. The platform will only retain your work for <strong>two hours</strong>. If you leave and return later, you may need to restart and run all cells again.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Tracking Progress</h2>
+                            <p>Each lesson you complete will be marked with a green checkmark. Your progress bar will update as you watch videos and complete exercises. Once the progress reaches 100%, you have successfully finished the lesson.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Providing Feedback</h2>
+                            <p>If you have any feedback about the course or platform, you can click the feedback link in the lower left corner to share your thoughts.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What keyboard shortcut is used to run a code cell?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q10" value="a"> A) Enter</label>
+                                        <label><input type="radio" name="q10" value="b"> B) Ctrl + Enter</label>
+                                        <label><input type="radio" name="q10" value="c"> C) Shift + Enter</label>
+                                        <label><input type="radio" name="q10" value="d"> D) Space</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q10', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q10"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. How long is your work saved on the platform?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q11" value="a"> A) Forever</label>
+                                        <label><input type="radio" name="q11" value="b"> B) Two hours</label>
+                                        <label><input type="radio" name="q11" value="c"> C) One day</label>
+                                        <label><input type="radio" name="q11" value="d"> D) One week</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q11', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q11"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What are the three main sections of the learning platform?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q12" value="a"> A) Header, Footer, Content</label>
+                                        <label><input type="radio" name="q12" value="b"> B) Navigation Pane, Coding Environment, Video Player</label>
+                                        <label><input type="radio" name="q12" value="c"> C) Menu, Editor, Console</label>
+                                        <label><input type="radio" name="q12" value="d"> D) Sidebar, Main Content, Settings</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q12', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q12"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>In Chapter 5, we'll start writing our first Python programs! You'll learn:</p>
+                            <ul>
+                                <li><strong>Basic Python syntax and data types</strong></li>
+                                <li><strong>How to write and execute simple programs</strong></li>
+                                <li><strong>Common programming concepts and best practices</strong></li>
+                            </ul>
+                            <p>Get ready to start your hands-on Python programming journey!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "Running Your Own Program with Google Colab",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Introduction to Google Colab</h2>
+                            <p>Google Colab (short for Colaboratory) is a free, cloud-based platform that allows you to write and execute Python code through your browser. It's an excellent tool for beginners because:</p>
+                            <ul>
+                                <li><strong>No Setup Required:</strong> You don't need to install Python on your computer</li>
+                                <li><strong>Free Access:</strong> It's completely free to use with a Google account</li>
+                                <li><strong>Built-in Collaboration:</strong> You can easily share your code with others</li>
+                                <li><strong>Pre-installed Libraries:</strong> Many popular Python libraries are already installed</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Getting Started with Google Colab</h2>
+                            <p>To begin coding in Google Colab:</p>
+                            <ol>
+                                <li>Visit <a href="https://colab.research.google.com" target="_blank">Google Colab</a></li>
+                                <li>Sign in with your Google account</li>
+                                <li>Click on "File" → "New notebook" to create a new workspace</li>
+                                <li>Click <a href="https://colab.research.google.com/drive/1234567890" target="_blank">here</a> to access our starter notebook</li>
+                            </ol>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Understanding Colab Notebooks</h2>
+                            <p>A Colab notebook consists of two types of cells:</p>
+                            <ul>
+                                <li><strong>Code cells:</strong> Where you write and run Python code</li>
+                                <li><strong>Text cells:</strong> Where you can write notes and explanations using Markdown</li>
+                            </ul>
+                            <p>To run a code cell:</p>
+                            <ul>
+                                <li>Click the play button next to the cell, or</li>
+                                <li>Press Shift + Enter on your keyboard</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Running Your First Program</h2>
+                            <p>Let's write our first Python program in Google Colab. In a code cell, type:</p>
+                            <pre><code class="language-python">print("Welcome to Python Programming!")</code></pre>
+                            <p>Click the play button or press Shift + Enter to run the cell. You should see the message appear below the cell!</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Modifying and Experimenting</h2>
+                            <p>Try this more interactive example:</p>
+                            <pre><code class="language-python">name = "Your Name"  # Replace with your name
+print(f"Hello, {name}! Welcome to Python programming.")</code></pre>
+                            <p>Change "Your Name" to your actual name and run the cell. The program will greet you personally!</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Saving and Sharing Your Work</h2>
+                            <p>Google Colab automatically saves your work to Google Drive. To share your notebook:</p>
+                            <ol>
+                                <li>Click the "Share" button in the top-right corner</li>
+                                <li>Choose who can access your notebook</li>
+                                <li>Copy and share the link</li>
+                            </ol>
+                            <p>This makes it easy to collaborate with others or submit your work for review.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Practice Exercises</h2>
+                            <p>Try these exercises in your Colab notebook:</p>
+                            <ol>
+                                <li>Print your favorite quote:
+                                    <pre><code class="language-python">quote = "Your favorite quote here"
+print(quote)</code></pre>
+                                </li>
+                                <li>Create a simple calculation:
+                                    <pre><code class="language-python">result = 7 * 6
+print(f"7 times 6 equals {result}")</code></pre>
+                                </li>
+                                <li>Combine text and numbers:
+                                    <pre><code class="language-python">age = 25  # Replace with your age
+print(f"I am {age} years old")</code></pre>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What is Google Colab?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q13" value="a"> A) A paid programming software</label>
+                                        <label><input type="radio" name="q13" value="b"> B) A free, cloud-based platform for writing and executing Python code</label>
+                                        <label><input type="radio" name="q13" value="c"> C) A desktop Python editor</label>
+                                        <label><input type="radio" name="q13" value="d"> D) A programming language</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q13', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q13"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. How do you run a code cell in Google Colab?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q14" value="a"> A) Click the save button</label>
+                                        <label><input type="radio" name="q14" value="b"> B) Press Enter</label>
+                                        <label><input type="radio" name="q14" value="c"> C) Click the play button or press Shift + Enter</label>
+                                        <label><input type="radio" name="q14" value="d"> D) Double-click the cell</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q14', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q14"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What happens to your work in Google Colab?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q15" value="a"> A) It's deleted when you close the browser</label>
+                                        <label><input type="radio" name="q15" value="b"> B) It's automatically saved to Google Drive</label>
+                                        <label><input type="radio" name="q15" value="c"> C) It's saved locally on your computer</label>
+                                        <label><input type="radio" name="q15" value="d"> D) It's only temporary</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q15', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q15"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>In Chapter 6, we'll dive deeper into Python programming concepts, including:</p>
+                            <ul>
+                                <li><strong>Variables and data types</strong></li>
+                                <li><strong>Basic operations and calculations</strong></li>
+                                <li><strong>Working with strings and numbers</strong></li>
+                            </ul>
+                            <p>Get ready to expand your Python programming skills!</p>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "How to Succeed in Coding",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Embrace Hands-on Learning</h2>
+                            <p>One of the best ways to learn coding is by writing and running code yourself. Watching videos and reading tutorials can help, but real understanding comes from practice. Whenever you encounter new concepts, try coding them out immediately. Pause instructional videos, type out the examples, and experiment with different variations.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Test Your Understanding</h2>
+                            <p>To strengthen your coding skills, test your understanding by predicting what will happen before running the code. Ask yourself questions like:</p>
+                            <ul>
+                                <li>"What will happen if I leave out a quotation mark?"</li>
+                                <li>"What if I accidentally have two closing parentheses instead of one?"</li>
+                                <li>"What if I change this part of the code?"</li>
+                            </ul>
+                            <p>After making predictions, modify the code, run it, and compare your expectations with the actual output.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Complete Practice Exercises</h2>
+                            <p>Practice is essential for mastering coding concepts. Beyond watching videos and reading documentation, actively working through exercises will help reinforce what you learn. The more problems you solve, the more confident you'll become in your coding skills.</p>
+                            <div class="practice-box" style="background: #F3F4F6; padding: 1rem; border-radius: 0.5rem; margin: 1rem 0;">
+                                <h3>Recommended Practice Platform</h3>
+                                <p>Visit <a href="https://codingbat.com/python" target="_blank">CodingBat Python</a> and complete:</p>
+                                <ul>
+                                    <li>Warmup 1 - Basic Python problems</li>
+                                    <li>Warmup 2 - Intermediate challenges</li>
+                                </ul>
+                                <p>Feel free to use AI assistants like ChatGPT to help you understand and solve these problems!</p>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Utilize AI Chatbots for Assistance</h2>
+                            <p>Think of an AI chatbot as your coding companion. It is patient, knowledgeable, and always available to assist you. Whenever you encounter difficulties, feel free to ask the chatbot questions such as:</p>
+                            <ul>
+                                <li>"What does this code do?"</li>
+                                <li>"Why does this function work this way?"</li>
+                                <li>"How can I fix this error?"</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Debugging: Expect and Embrace Errors</h2>
+                            <p>Errors in code are completely normal, especially when learning a new programming language. Just as with learning a new spoken language, you may not get everything right the first time, and that is okay! Instead of getting frustrated, use errors as learning opportunities.</p>
+                            <ul>
+                                <li>Read and understand error messages</li>
+                                <li>Try different approaches to fix the issue</li>
+                                <li>Ask the chatbot for help when needed</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Read and Analyze AI-generated Solutions</h2>
+                            <p>Instead of simply copying and pasting AI-generated code, take time to read and understand the solutions. This will help you gain new perspectives and deepen your comprehension of coding concepts. Consider asking follow-up questions about the chatbot's responses to clarify any doubts and enhance your learning process.</p>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Learn at Your Own Pace</h2>
+                            <p>There is no one-size-fits-all approach to learning how to code. Some people learn quickly, while others take more time to grasp concepts. It's important to:</p>
+                            <ul>
+                                <li>Pause videos whenever necessary to process new information</li>
+                                <li>Take breaks and return when you feel ready</li>
+                                <li>Move at a pace that ensures you truly understand each concept before proceeding</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. What is the best way to learn coding?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q16" value="a"> A) Only watching tutorial videos</label>
+                                        <label><input type="radio" name="q16" value="b"> B) Reading documentation without practice</label>
+                                        <label><input type="radio" name="q16" value="c"> B) Hands-on practice and experimentation</label>
+                                        <label><input type="radio" name="q16" value="d"> D) Memorizing code snippets</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q16', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q16"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. How should you approach errors in your code?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q17" value="a"> A) Get frustrated and give up</label>
+                                        <label><input type="radio" name="q17" value="b"> B) Ignore them and start over</label>
+                                        <label><input type="radio" name="q17" value="c"> C) View them as learning opportunities and debug systematically</label>
+                                        <label><input type="radio" name="q17" value="d"> D) Always ask someone else to fix them</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q17', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q17"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What's the recommended approach when using AI-generated code?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q18" value="a"> A) Copy and paste the code</label>
+                                        <label><input type="radio" name="q18" value="b"> B) Read and understand the code</label>
+                                        <label><input type="radio" name="q18" value="c"> C) Modify the code</label>
+                                        <label><input type="radio" name="q18" value="d"> D) Ignore the code</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q18', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q18"></div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "Setting Up Your Professional Development Environment",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Beyond Google Colab: Why You Need a Professional IDE</h2>
+                            <p>While Google Colab is an excellent starting point for learning Python, professional development requires a more robust environment. Here's why:</p>
+                            <div class="comparison-box" style="background: #F3F4F6; padding: 1.5rem; border-radius: 0.5rem; margin: 1rem 0;">
+                                <h3>Google Colab Limitations:</h3>
+                                <ul>
+                                    <li>Requires internet connection</li>
+                                    <li>Limited file system access</li>
+                                    <li>Session timeouts</li>
+                                    <li>Basic code completion</li>
+                                </ul>
+                                
+                                <h3>Professional IDE Advantages:</h3>
+                                <ul>
+                                    <li>Works offline</li>
+                                    <li>Full access to local files</li>
+                                    <li>Advanced debugging tools</li>
+                                    <li>Integrated AI assistance</li>
+                                    <li>Better project management</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Installing Python Locally</h2>
+                            <p>Follow these steps to install Python on your computer:</p>
+                            
+                            <h3>Windows:</h3>
+                            <ol>
+                                <li>Visit <a href="https://www.python.org/downloads/" target="_blank">Python's official website</a></li>
+                                <li>Download the latest Python version</li>
+                                <li>Run the installer</li>
+                                <li>Check "Add Python to PATH"</li>
+                                <li>Click "Install Now"</li>
+                            </ol>
+
+                            <h3>macOS:</h3>
+                            <ol>
+                                <li>Install Homebrew by running:
+                                    <pre><code class="language-bash">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></pre>
+                                </li>
+                                <li>Install Python using Homebrew:
+                                    <pre><code class="language-bash">brew install python</code></pre>
+                                </li>
+                            </ol>
+
+                            <h3>Linux:</h3>
+                            <ol>
+                                <li>Python usually comes pre-installed</li>
+                                <li>To install the latest version:
+                                    <pre><code class="language-bash">sudo apt-get update
+sudo apt-get install python3</code></pre>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Setting Up Cursor AI</h2>
+                            <p>Cursor AI is a revolutionary code editor that combines the power of traditional IDEs with advanced AI capabilities. Here's how to get started:</p>
+                            
+                            <h3>Installation Steps:</h3>
+                            <ol>
+                                <li>Visit <a href="https://cursor.sh" target="_blank">cursor.sh</a></li>
+                                <li>Download the appropriate version for your operating system</li>
+                                <li>Run the installer</li>
+                                <li>Launch Cursor AI</li>
+                            </ol>
+
+                            <div class="feature-box" style="background: #F3F4F6; padding: 1.5rem; border-radius: 0.5rem; margin: 1rem 0;">
+                                <h3>Why Cursor AI Excels for AI Development:</h3>
+                                <ul>
+                                    <li><strong>Built-in AI Assistant:</strong> Get instant help with coding questions</li>
+                                    <li><strong>Smart Code Generation:</strong> Generate boilerplate code quickly</li>
+                                    <li><strong>AI-Powered Debugging:</strong> Identify and fix issues faster</li>
+                                    <li><strong>Context-Aware Suggestions:</strong> Receive relevant code completions</li>
+                                    <li><strong>Seamless API Integration:</strong> Easy integration with OpenAI and other AI services</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Best Practices with Cursor AI</h2>
+                            <p>To make the most of Cursor AI for AI development:</p>
+                            <ul>
+                                <li>Use the AI chat panel for quick code explanations</li>
+                                <li>Leverage code generation for repetitive tasks</li>
+                                <li>Ask for optimization suggestions</li>
+                                <li>Use the built-in version control features</li>
+                                <li>Take advantage of the integrated terminal</li>
+                            </ul>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>Check Your Understanding</h2>
+                            <div class="quiz-container">
+                                <div class="quiz-question">
+                                    <p><strong>1. Why might you need a professional IDE instead of Google Colab?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q19" value="a"> A) Google Colab is outdated</label>
+                                        <label><input type="radio" name="q19" value="b"> B) Professional IDEs offer offline access and advanced tools</label>
+                                        <label><input type="radio" name="q19" value="c"> C) Google Colab is too expensive</label>
+                                        <label><input type="radio" name="q19" value="d"> D) Professional IDEs are simpler to use</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q19', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q19"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>2. What is a key feature of Cursor AI for AI development?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q20" value="a"> A) It's completely free</label>
+                                        <label><input type="radio" name="q20" value="b"> B) It only works online</label>
+                                        <label><input type="radio" name="q20" value="c"> C) Built-in AI assistant and smart code generation</label>
+                                        <label><input type="radio" name="q20" value="d"> D) It replaces Python installation</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q20', 'c')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q20"></div>
+                                </div>
+
+                                <div class="quiz-question">
+                                    <p><strong>3. What should you check when installing Python on Windows?</strong></p>
+                                    <div class="quiz-options">
+                                        <label><input type="radio" name="q21" value="a"> A) Add Python to PATH</label>
+                                        <label><input type="radio" name="q21" value="b"> B) Install games</label>
+                                        <label><input type="radio" name="q21" value="c"> C) Remove old versions</label>
+                                        <label><input type="radio" name="q21" value="d"> D) Change the installation directory</label>
+                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q21', 'a')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q21"></div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="post-section">
+                            <h2>What's Next?</h2>
+                            <p>Now that you have your development environment set up, you're ready to start building more complex AI applications. In the upcoming lessons, we'll explore:</p>
+                            <ul>
+                                <li>Creating AI-powered applications</li>
+                                <li>Working with APIs</li>
+                                <li>Building user interfaces</li>
+                                <li>Deploying your applications</li>
+                            </ul>
+                        </section>
+                    </div>
+                `
+            },
+            {
+                title: "Welcome to the Community!",
+                content: `
+                    <div class="blog-post">
+                        <section class="post-section">
+                            <h2>Final Steps to Join Our Learning Community</h2>
+                            <p>Congratulations on reaching the end of the course manual! Now it's time to join our vibrant learning community on Discord.</p>
+
+                            <div class="checklist-container" style="background: #F3F4F6; padding: 2rem; border-radius: 0.5rem; margin: 2rem 0;">
+                                <h3>Getting Started Checklist</h3>
+                                <div class="checklist">
+                                   
+                                    
+                                    
+                                    <label class="checklist-item">
+                                        <input type="checkbox" onchange="toggleStrikethrough(this)">
+                                        <span>Join our Discord community</span>
+                                    </label>
+                                    
+                                    <label class="checklist-item">
+                                        <input type="checkbox" onchange="toggleStrikethrough(this)">
+                                        <span>Read the guidelines in the #guidelines channel</span>
+                                    </label>
+                                    
+                                    <label class="checklist-item">
+                                        <input type="checkbox" onchange="toggleStrikethrough(this)">
+                                        <span>Post your introduction in #introductions</span>
+                                    </label>
+
+                                     <label class="checklist-item">
+                                        <input type="checkbox" onchange="toggleStrikethrough(this)">
+                                        <span>Complete the <a href="https://forms.gle/your-form-link" target="_blank">prep survey</a> to share your goals and needs</span>
+                                    </label>
+                                </div>
+
+                             
+
+                               
+                `
+            }
+        ];
+
+        let currentChapterIndex = 0;
+
+        function updateSliderProgress(value, sliderId) {
+            const slider = document.getElementById(sliderId);
+            const progress = (value - slider.min) / (slider.max - slider.min) * 100;
+            slider.style.background = `linear-gradient(to right, #7C3AED ${progress}%, #E5E7EB ${progress}%)`;
+        }
+
+        function updateChapterContent() {
+            const chapter = chapters[currentChapterIndex];
+            document.getElementById('chapterContent').innerHTML = `
+                <h1>Chapter ${currentChapterIndex + 1}: ${chapter.title}</h1>
+                ${chapter.content}
+            `;
+            
+            // Update both sliders and their indicators
+            const newValue = currentChapterIndex + 1;
+            document.getElementById('currentChapter').textContent = newValue;
+            document.getElementById('bottomCurrentChapter').textContent = newValue;
+            document.getElementById('chapterSlider').value = newValue;
+            document.getElementById('bottomChapterSlider').value = newValue;
+            
+            // Update progress bars for both sliders
+            updateSliderProgress(newValue, 'chapterSlider');
+            updateSliderProgress(newValue, 'bottomChapterSlider');
+            
+            // Update button states
+            document.getElementById('prevButton').disabled = currentChapterIndex === 0;
+            document.getElementById('nextButton').disabled = currentChapterIndex === chapters.length - 1;
+        }
+
+        document.getElementById('prevButton').addEventListener('click', () => {
+            if (currentChapterIndex > 0) {
+                currentChapterIndex--;
+                updateChapterContent();
+            }
+        });
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            if (currentChapterIndex < chapters.length - 1) {
+                currentChapterIndex++;
+                updateChapterContent();
+            }
+        });
+
+        // Event listeners for both sliders
+        document.getElementById('chapterSlider').addEventListener('input', (e) => {
+            currentChapterIndex = parseInt(e.target.value) - 1;
+            updateChapterContent();
+        });
+
+        document.getElementById('bottomChapterSlider').addEventListener('input', (e) => {
+            currentChapterIndex = parseInt(e.target.value) - 1;
+            updateChapterContent();
+        });
+
+        // Initialize first chapter and sliders
+        updateChapterContent();
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentChapterIndex > 0) {
+                currentChapterIndex--;
+                updateChapterContent();
+            } else if (e.key === 'ArrowRight' && currentChapterIndex < chapters.length - 1) {
+                currentChapterIndex++;
+                updateChapterContent();
+            }
+        });
+
+        function checkAnswer(questionId, correctAnswer) {
+            const selectedAnswer = document.querySelector(`input[name="${questionId}"]:checked`);
+            const feedbackDiv = document.getElementById(`feedback-${questionId}`);
+            
+            if (!selectedAnswer) {
+                alert("Please select an answer before submitting.");
+                return;
+            }
+
+            const isCorrect = selectedAnswer.value === correctAnswer;
+            feedbackDiv.style.display = 'block';
+            feedbackDiv.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+
+            const explanations = {
+                q1: {
+                    explanation: "Python is known for its simple syntax, readability, and extensive collection of libraries that support machine learning and AI development.",
+                    citation: "This is explained in the 'Why Python for AI?' section."
+                },
+                q2: {
+                    explanation: "AI-powered tools provide instant feedback, help generate code snippets, and assist in finding errors quickly, making coding more accessible.",
+                    citation: "This is covered in the 'How AI is Changing Coding' section."
+                },
+                q3: {
+                    explanation: "Learning to code enables automation of repetitive tasks and data analysis, making work more efficient.",
+                    citation: "This is discussed in 'The Benefits of Learning Python' section."
+                },
+                q4: {
+                    explanation: "Python is used in a variety of real-world applications, including self-driving cars, healthcare, and financial services.",
+                    citation: "This is mentioned in the 'Python in Real-World Applications' section."
+                },
+                q5: {
+                    explanation: "Python is the #1 choice for AI development because it's easy to learn, powerful, and has strong community support.",
+                    citation: "This is mentioned in the 'Python: The Most Popular Programming Language' section."
+                },
+                q6: {
+                    explanation: "Programming contributes to scientific discoveries by processing vast amounts of data, which is mentioned in the 'Why Learn to Code?' section.",
+                    citation: "This is mentioned in the 'Why Learn to Code?' section."
+                },
+                q7: {
+                    explanation: "The text we enter into a chatbot is called a prompt. This is explained in the 'Understanding Prompts and Responses' section.",
+                    citation: "This is covered in section 3.2 'Understanding Prompts and Responses'."
+                },
+                q8: {
+                    explanation: "The 'Hello, World!' program is traditionally the first program written by new programmers, as it introduces basic syntax and output.",
+                    citation: "This is discussed in section 3.3 'Writing Your First Program with a Chatbot'."
+                },
+                q9: {
+                    explanation: "While AI chatbots excel at generating quick code snippets, explaining concepts, and debugging simple errors, they struggle with writing highly complex algorithms.",
+                    citation: "This is explained in section 3.6 'The Limitations of AI-Generated Code'."
+                },
+                q10: {
+                    explanation: "The correct key combination to run a code cell is Shift + Enter.",
+                    citation: "This is covered in section 4.4 'Using the Coding Environment'."
+                },
+                q11: {
+                    explanation: "Your work is saved temporarily for two hours on the platform.",
+                    citation: "This is explained in section 4.5 'Saving Your Work'."
+                },
+                q12: {
+                    explanation: "The learning platform consists of three main sections: Navigation Pane, Coding Environment, and Video Player.",
+                    citation: "This is covered in section 4.2 'Key Sections of the Learning Platform'."
+                },
+                q13: {
+                    explanation: "Google Colab is a free, cloud-based platform that allows you to write and execute Python code through your browser.",
+                    citation: "This is covered in the 'Introduction to Google Colab' section."
+                },
+                q14: {
+                    explanation: "You can run a code cell in Google Colab by either clicking the play button next to the cell or pressing Shift + Enter.",
+                    citation: "This is explained in the 'Understanding Colab Notebooks' section."
+                },
+                q15: {
+                    explanation: "Your work in Google Colab is automatically saved to Google Drive, making it easy to access and share.",
+                    citation: "This is covered in the 'Saving and Sharing Your Work' section."
+                },
+                q16: {
+                    explanation: "The best way to learn coding is by writing and running code yourself. Watching videos and reading tutorials can help, but real understanding comes from practice. Whenever you encounter new concepts, try coding them out immediately. Pause instructional videos, type out the examples, and experiment with different variations.",
+                    citation: "This is covered in section 6.1 'Embrace Hands-on Learning'."
+                },
+                q17: {
+                    explanation: "Instead of getting frustrated and giving up, view errors as learning opportunities and debug systematically.",
+                    citation: "This is covered in section 6.3 'Debugging: Expect and Embrace Errors'."
+                },
+                q18: {
+                    explanation: "Instead of simply copying and pasting AI-generated code, take time to read and understand the solutions. This will help you gain new perspectives and deepen your comprehension of coding concepts. Consider asking follow-up questions about the chatbot's responses to clarify any doubts and enhance your learning process.",
+                    citation: "This is covered in section 6.4 'Read and Analyze AI-generated Solutions'."
+                },
+                q19: {
+                    explanation: "Professional IDEs offer advantages like offline access, advanced debugging tools, and better project management capabilities.",
+                    citation: "This is covered in the 'Beyond Google Colab: Why You Need a Professional IDE' section."
+                },
+                q20: {
+                    explanation: "Cursor AI features a built-in AI assistant and smart code generation capabilities, making it excellent for AI development.",
+                    citation: "This is explained in the 'Why Cursor AI Excels for AI Development' section."
+                },
+                q21: {
+                    explanation: "When installing Python on Windows, it's important to check 'Add Python to PATH' to ensure Python can be run from any directory.",
+                    citation: "This is mentioned in the 'Installing Python Locally' section under Windows installation steps."
+                }
+            };
+
+            const feedback = explanations[questionId];
+            feedbackDiv.innerHTML = `
+                <p class="result"><strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong></p>
+                <p class="explanation">${feedback.explanation}</p>
+                <p class="citation"><em>${feedback.citation}</em></p>
+            `;
+
+            // Disable the submit button after answering
+            const submitButton = feedbackDiv.previousElementSibling;
+            submitButton.disabled = true;
+        }
+
+        // Add this new function for the checklist functionality
+        function toggleStrikethrough(checkbox) {
+            const textSpan = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                textSpan.style.textDecoration = 'line-through';
+                textSpan.style.opacity = '0.7';
+            } else {
+                textSpan.style.textDecoration = 'none';
+                textSpan.style.opacity = '1';
+            }
+        }
+    </script>
+
+    <style>
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+
+        .introduction-template pre {
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+        }
+    </style>
+</body>
+</html>
