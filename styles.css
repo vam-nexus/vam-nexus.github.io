@@ -67,6 +67,7 @@ body {
     margin: 0 auto;
     margin-bottom: 2rem;
     border-radius: 1rem;
+    box-sizing: border-box;
 }
 
 .slider {
@@ -271,15 +272,62 @@ h1 {
 /* Responsive styles */
 @media (max-width: 768px) {
     body {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
-    .module-container {
-        padding: 1.5rem;
-        margin-bottom: 2rem;
-    }
-
+    .module-container,
     .slider-container {
         padding: 1rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        border-radius: 0.5rem;
+    }
+
+    .nav-button {
+        padding: 1rem 1.5rem;
+        min-height: 48px;
+    }
+
+    .slider::-webkit-slider-thumb {
+        width: 24px;
+        height: 24px;
+    }
+
+    .quiz-options label {
+        padding: 0.75rem;
+        margin: 0.5rem 0;
+        background: #F3F4F6;
+        border-radius: 0.5rem;
+        display: block;
+    }
+
+    .quiz-options input[type="radio"] {
+        margin-right: 1rem;
+        transform: scale(1.2);
+    }
+
+    .submit-answer {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .post-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .button-container {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .nav-button {
+        width: 100%;
     }
 }
