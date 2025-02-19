@@ -3,7 +3,7 @@ body {
     min-height: 100vh;
     font-family: 'Gothic A1', 'Century Gothic', Arial, sans-serif;
     background: linear-gradient(135deg, #9333EA, #6366F1);
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     overflow-x: hidden;
     max-width: 100vw;
 }
@@ -61,14 +61,14 @@ body {
     width: 100%;
     max-width: 800px;
     background: white;
-    padding: 1.5rem;
+    padding: 0.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.25rem;
     margin: 0 auto 1rem auto;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     box-sizing: border-box;
 }
 
@@ -79,7 +79,7 @@ body {
     background: #E5E7EB;
     outline: none;
     border-radius: 2px;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .slider::-webkit-slider-thumb {
@@ -99,8 +99,8 @@ body {
 
 .chapter-indicator {
     color: #4B5563;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    margin: 0;
 }
 
 .nav-button {
@@ -342,4 +342,26 @@ h1 {
         width: 24px;
         height: 24px;
     }
+}
+
+/* Add new banner styles */
+.header-banner {
+    background: linear-gradient(135deg, #2f2b7d, #7C3AED);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-banner h1 {
+    text-align: center;
+    color: white;
+    font-family: monospace;
+    margin: 0;
+    font-size: 2rem;
 }

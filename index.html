@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 style="text-align: center; color: white; font-family: monospace; margin-bottom: 2rem;">AI Python 101: A Crash Course (Prep Manual)</h1>
+    <div class="header-banner">
+        <h1>AI Python 101: A Crash Course (Prep Manual)</h1>
+    </div>
 
     <div class="slider-container">
+        <div class="chapter-indicator">
+            Chapter <span id="currentChapter">1</span> of 9
+        </div>
         <input type="range" 
                min="1" 
                max="9" 
                value="1" 
                class="slider" 
                id="chapterSlider">
-        <div class="chapter-indicator">
-            Chapter <span id="currentChapter">1</span> of 9
-        </div>
+        
     </div>
 
     <div class="module-container">
@@ -49,8 +52,8 @@
                 content: `
                     <div class="blog-post">
                         <section class="post-section">
-                            <h2>Complete These Tasks Before Starting</h2>
-                            <p>Before you begin the AI Python 101 crash course, it's important to go through some preparation steps. This guide outlines everything you need to do to ensure a smooth learning experience and get the most out of the course.</p>
+                            <h2>Getting Ready</h2>
+                            <p>Before starting the AI Python 101 crash course, here are a few steps to help you prepare and have a smooth learning experience.</p>
                         </section>
 
                         <section class="post-section">
@@ -60,96 +63,83 @@
 
                         <section class="post-section">
                             <h2>What You'll Achieve by the End of This Course</h2>
-                            <div class="achievement-box" style="background: #F3F4F6; padding: 1.5rem; border-radius: 0.5rem; margin: 1rem 0;">
-                                <h3>1. Python Programming</h3>
+                            <div class="achievement-box" style="background: #FFEFD5; padding: 1.5rem; border-radius: 0.5rem; margin: 1rem 0;">
+                                <h3>1. 🐍 Python Programming</h3>
                                 <p>You'll be able to write Python code using proper syntax, data structures, and basic algorithms to solve problems efficiently.</p>
                                 
-                                <h3>2. Google Colab</h3>
+                                <h3>2. 💻 Google Colab</h3>
                                 <p>You'll learn how to use Google Colab to execute Python code, collaborate with peers, and streamline your workflow in an interactive coding environment.</p>
                                 
-                                <h3>3. Cursor AI</h3>
-                                <p>You'll leverage AI-assisted coding tools like Cursor AI to enhance your productivity and learning experience.</p>
+                                <h3>3. 🤖 Cursor AI</h3>
+                                <p>You'll be to use AI-assisted coding tools like ChatGPT, Claude, Cursor AI to boost your productivity in writing code and learning experience.</p>
                                 
-                                <h3>4. Discord Community Engagement</h3>
+                                <h3>4. 🗣️ Discord Community Engagement</h3>
                                 <p>You'll become familiar with using Discord to engage with a community for support, collaboration, and knowledge sharing.</p>
                                 
-                                <h3>5. OpenAI & Hugging Face</h3>
+                                <h3>5. 🌐 OpenAI & Hugging Face</h3>
                                 <p>You'll explore and utilize advanced AI models for tasks such as text generation, data analysis, and AI-powered applications.</p>
                                 
-                                <h3>6. UI Development</h3>
+                                <h3>6. 🎨 UI Development</h3>
                                 <p>You'll learn how to create intuitive and user-friendly interfaces for AI applications.</p>
                             </div>
                         </section>
-
-                        <section class="post-section">
-                            <h2>Required Tools and Setup</h2>
-                            <div class="setup-checklist">
-                                <h3>Essential Accounts</h3>
-                                <ul>
-                                    <li><input type="checkbox"> Google Account (for Google Colab)</li>
-                                    <li><input type="checkbox"> Discord Account (for community support)</li>
-                                    <li><input type="checkbox"> GitHub Account (optional, for code sharing)</li>
-                                </ul>
-
-                                <h3>Recommended Browsers</h3>
-                                <ul>
-                                    <li>Google Chrome (preferred)</li>
-                                    <li>Mozilla Firefox</li>
-                                    <li>Microsoft Edge</li>
-                                </ul>
-                            </div>
+                        </section>
                         </section>
 
+                        
                         <section class="post-section">
                             <h2>Quick Challenges</h2>
                             <div class="quiz-container">
                                 <div class="quiz-question">
-                                    <p><strong>1. What tools will you learn to use in this course?</strong></p>
+                                    <p><strong>1. What is the most famous programming language for AI?</strong></p>
                                     <div class="quiz-options">
-                                        <label><input type="radio" name="q1" value="a"> A) Only Python</label>
-                                        <label><input type="radio" name="q1" value="b"> B) Python, Google Colab, and AI tools</label>
-                                        <label><input type="radio" name="q1" value="c"> C) Just AI models</label>
-                                        <label><input type="radio" name="q1" value="d"> D) Only web development</label>
+                                        <label><input type="radio" name="q1" value="a"> A) Java</label>
+                                        <label><input type="radio" name="q1" value="b"> B) Python</label>
+                                        <label><input type="radio" name="q1" value="c"> C) C++</label>
+                                        <label><input type="radio" name="q1" value="d"> D) Ruby</label>
                                     </div>
                                     <button class="submit-answer" onclick="checkAnswer('q1', 'b')">Submit Answer</button>
                                     <div class="quiz-feedback" id="feedback-q1"></div>
                                 </div>
 
                                 <div class="quiz-question">
-                                    <p><strong>2. Which account is essential for this course?</strong></p>
+                                    <p><strong>2. Who is a renowned teacher in AI known for his courses on deeplearning.ai?</strong></p>
                                     <div class="quiz-options">
-                                        <label><input type="radio" name="q2" value="a"> A) Twitter account</label>
-                                        <label><input type="radio" name="q2" value="b"> B) Google account</label>
-                                        <label><input type="radio" name="q2" value="c"> C) Facebook account</label>
-                                        <label><input type="radio" name="q2" value="d"> D) Instagram account</label>
+                                        <label><input type="radio" name="q2" value="a"> A) Elon Musk</label>
+                                        <label><input type="radio" name="q2" value="b"> B) Andrew Ng</label>
+                                        <label><input type="radio" name="q2" value="c"> C) Mark Zuckerberg</label>
+                                        <label><input type="radio" name="q2" value="d"> D) Bill Gates</label>
                                     </div>
                                     <button class="submit-answer" onclick="checkAnswer('q2', 'b')">Submit Answer</button>
                                     <div class="quiz-feedback" id="feedback-q2"></div>
                                 </div>
 
                                 <div class="quiz-question">
-                                    <p><strong>3. What is the purpose of Discord in this course?</strong></p>
+                                    <p><strong>3. What is a good way to get into hands-on projects and learn AI?</strong></p>
                                     <div class="quiz-options">
-                                        <label><input type="radio" name="q3" value="a"> A) Playing games</label>
-                                        <label><input type="radio" name="q3" value="b"> B) Community support and collaboration</label>
-                                        <label><input type="radio" name="q3" value="c"> C) Watching videos</label>
-                                        <label><input type="radio" name="q3" value="d"> D) Running Python code</label>
+                                        <label><input type="radio" name="q3" value="a"> A) Watching movies</label>
+                                        <label><input type="radio" name="q3" value="b"> B) Reading novels</label>
+                                        <label><input type="radio" name="q3" value="c"> C) Using Kaggle</label>
+                                        <label><input type="radio" name="q3" value="d"> D) Playing video games</label>
                                     </div>
-                                    <button class="submit-answer" onclick="checkAnswer('q3', 'b')">Submit Answer</button>
+                                    <button class="submit-answer" onclick="checkAnswer('q3', 'c')">Submit Answer</button>
                                     <div class="quiz-feedback" id="feedback-q3"></div>
                                 </div>
                             </div>
                         </section>
+                        </section>
 
                         <section class="post-section">
                             <h2>What's Next?</h2>
-                            <p>Once you've completed the preparation steps, you'll be ready to begin Chapter 1: Introduction to Python Programming. Make sure you have:</p>
+                            <p>You are now ready to begin the prep manual. In the upcoming chapters, you'll explore:</p>
                             <ul>
-                                <li><strong>Created all required accounts</strong></li>
-                                <li><strong>Installed a recommended browser</strong></li>
-                                <li><strong>Bookmarked important course resources</strong></li>
+                                <li><strong>The Role of Python in AI Development:</strong> Why it's the preferred language</li>
+                                <li><strong>Transforming Industries:</strong> How programming and AI are making an impact</li>
+                                <li><strong>AI Chatbots as Coding Companions:</strong> Writing code with AI assistance</li>
+                                <li><strong>Google Colab:</strong> Creating your first Python program</li>
+                                <li><strong>Installing Tools:</strong> Python and Cursor AI setup</li>
+                                <li><strong>Join Our Community:</strong> Connect with us on Discord</li>
                             </ul>
-                            <p>Let's begin your journey into AI-powered Python programming!</p>
                         </section>
                     </div>
                 `
@@ -187,51 +177,39 @@
                             <h2>Quick Challenges</h2>
                             <div class="quiz-container">
                                 <div class="quiz-question">
-                                    <p><strong>1. Why is Python particularly well-suited for AI development?</strong></p>
+                                    <p><strong>1. Why is Python commonly used in AI development?</strong></p>
                                     <div class="quiz-options">
                                         <label><input type="radio" name="q1" value="a"> A) It's the newest programming language</label>
-                                        <label><input type="radio" name="q1" value="b"> B) It has simple syntax, readability, and vast AI libraries</label>
+                                        <label><input type="radio" name="q1" value="b"> B) It has extensive libraries and simple syntax</label>
                                         <label><input type="radio" name="q1" value="c"> C) It's the fastest programming language</label>
-                                        <label><input type="radio" name="q1" value="d"> D) It was specifically designed for AI</label>
+                                        <label><input type="radio" name="q1" value="d"> D) It was created specifically for AI</label>
                                     </div>
                                     <button class="submit-answer" onclick="checkAnswer('q1', 'b')">Submit Answer</button>
-                                    <div class="quiz-feedback" id="feedback-q1">
-                                        <p class="result"></p>
-                                        <p class="explanation"></p>
-                                        <p class="citation"></p>
-                                    </div>
+                                    <div class="quiz-feedback" id="feedback-q1"></div>
                                 </div>
 
                                 <div class="quiz-question">
-                                    <p><strong>2. How are AI-powered tools changing the way people learn to code?</strong></p>
+                                    <p><strong>2. Which of these is a popular Python library for AI development?</strong></p>
                                     <div class="quiz-options">
-                                        <label><input type="radio" name="q2" value="a"> A) They replace human teachers entirely</label>
-                                        <label><input type="radio" name="q2" value="b"> B) They write all the code for you</label>
-                                        <label><input type="radio" name="q2" value="c"> C) They provide instant feedback and help find errors quickly</label>
-                                        <label><input type="radio" name="q2" value="d"> D) They make coding more complicated</label>
+                                        <label><input type="radio" name="q2" value="a"> A) jQuery</label>
+                                        <label><input type="radio" name="q2" value="b"> B) TensorFlow</label>
+                                        <label><input type="radio" name="q2" value="c"> C) React</label>
+                                        <label><input type="radio" name="q2" value="d"> D) Angular</label>
                                     </div>
-                                    <button class="submit-answer" onclick="checkAnswer('q2', 'c')">Submit Answer</button>
-                                    <div class="quiz-feedback" id="feedback-q2">
-                                        <p class="result"></p>
-                                        <p class="explanation"></p>
-                                        <p class="citation"></p>
-                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q2', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q2"></div>
                                 </div>
 
                                 <div class="quiz-question">
-                                    <p><strong>3. What is one of the main benefits of learning to code mentioned in the chapter?</strong></p>
+                                    <p><strong>3. What type of tasks can AI Python programs typically perform?</strong></p>
                                     <div class="quiz-options">
-                                        <label><input type="radio" name="q3" value="a"> A) Becoming a full-time programmer</label>
-                                        <label><input type="radio" name="q3" value="b"> B) Making video games</label>
-                                        <label><input type="radio" name="q3" value="c"> C) Automating repetitive tasks and analyzing data</label>
-                                        <label><input type="radio" name="q3" value="d"> D) Learning computer hardware</label>
+                                        <label><input type="radio" name="q3" value="a"> A) Only mathematical calculations</label>
+                                        <label><input type="radio" name="q3" value="b"> B) Image recognition, natural language processing, and data analysis</label>
+                                        <label><input type="radio" name="q3" value="c"> C) Website hosting only</label>
+                                        <label><input type="radio" name="q3" value="d"> D) Operating system development only</label>
                                     </div>
-                                    <button class="submit-answer" onclick="checkAnswer('q3', 'c')">Submit Answer</button>
-                                    <div class="quiz-feedback" id="feedback-q3">
-                                        <p class="result"></p>
-                                        <p class="explanation"></p>
-                                        <p class="citation"></p>
-                                    </div>
+                                    <button class="submit-answer" onclick="checkAnswer('q3', 'b')">Submit Answer</button>
+                                    <div class="quiz-feedback" id="feedback-q3"></div>
                                 </div>
                             </div>
                         </section>
@@ -1102,6 +1080,9 @@ sudo apt-get install python3</code></pre>
         }
 
         function updateChapterContent() {
+            // Store current scroll position
+            const scrollPosition = window.scrollY;
+            
             const chapter = chapters[currentChapterIndex];
             document.getElementById('chapterContent').innerHTML = `
                 <h1>Chapter ${currentChapterIndex + 1}: ${chapter.title}</h1>
@@ -1122,6 +1103,9 @@ sudo apt-get install python3</code></pre>
             // Update button states
             document.getElementById('prevButton').disabled = currentChapterIndex === 0;
             document.getElementById('nextButton').disabled = currentChapterIndex === chapters.length - 1;
+            
+            // Restore scroll position
+            window.scrollTo(0, scrollPosition);
         }
 
         document.getElementById('prevButton').addEventListener('click', () => {
@@ -1178,16 +1162,13 @@ sudo apt-get install python3</code></pre>
 
             const explanations = {
                 q1: {
-                    explanation: "Python is known for its simple syntax, readability, and extensive collection of libraries that support machine learning and AI development.",
-                    citation: "This is explained in the 'Why Python for AI?' section."
+                    explanation: "Python is widely recognized as the most popular programming language for AI development due to its extensive libraries, simple syntax, and strong community support in the AI/ML field."
                 },
                 q2: {
-                    explanation: "AI-powered tools provide instant feedback, help generate code snippets, and assist in finding errors quickly, making coding more accessible.",
-                    citation: "This is covered in the 'How AI is Changing Coding' section."
+                    explanation: "Andrew Ng is a renowned AI educator and researcher who founded deeplearning.ai, offering numerous popular courses that have helped millions learn AI and machine learning."
                 },
                 q3: {
-                    explanation: "Learning to code enables automation of repetitive tasks and data analysis, making work more efficient.",
-                    citation: "This is discussed in 'The Benefits of Learning Python' section."
+                    explanation: "Kaggle is a platform that provides hands-on experience through real-world datasets, competitions, and collaborative projects, making it an excellent resource for learning AI practically."
                 },
                 q4: {
                     explanation: "Python is used in a variety of real-world applications, including self-driving cars, healthcare, and financial services.",
@@ -1267,7 +1248,6 @@ sudo apt-get install python3</code></pre>
             feedbackDiv.innerHTML = `
                 <p class="result"><strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong></p>
                 <p class="explanation">${feedback.explanation}</p>
-                <p class="citation"><em>${feedback.citation}</em></p>
             `;
 
             // Disable the submit button after answering
