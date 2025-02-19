@@ -18,7 +18,7 @@ const chapters = [
                             <p>This guide should take about <strong>1.5 hours</strong> to complete and it is best done on a <strong>laptop</strong> as opposed to a phone.</p>
                             <p>You can ask as many questions as you want in the Discord community for support.</p>
                             <div style="text-align: center;">
-                                     <a href="https://discord.gg/RRgVfzsG3P" target="_blank" class="join-discord-button">Join Discord</a>
+                                     <a href="https://discord.gg/RRgVfzsG3P" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 0.25rem;">Join Discord</a>
                                  </div>
                             
                         </section>
@@ -491,7 +491,7 @@ print(f"There are {days_between} days between Christmas and your birthday.")</st
                                     <span>Join our Discord community to connect with peers and instructors.</span>
                                 </label>
                                  <div style="text-align: center;">
-                                     <a href="https://discord.gg/RRgVfzsG3P" target="_blank" class="join-discord-button">Join Discord</a>
+                                     <a href="https://discord.gg/RRgVfzsG3P" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 0.25rem;">Join Discord</a>
                                  </div>
                                 <br>
                                 <label class="checklist-item">
@@ -638,7 +638,7 @@ Like a diamond in the sky.")
                             <p>Google Colab automatically saves your work to Google Drive. You can easily share your notebooks with others or export them as HTML, PDF, or Python scripts.</p>
                             <p>Share your Colab URL on Discord in the #share-your-work channel by clicking the share button on the top right of the notebook.</p>
                             <div style="text-align: center;">
-                                <a href="https://discord.gg/RRgVfzsG3P" target="_blank" class="join-discord-button">Discord Link</a>
+                                <a href="https://discord.gg/RRgVfzsG3P" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 0.25rem;">Discord Link</a>
                             </div>
                         </section>
 
@@ -1014,7 +1014,7 @@ Like a diamond in the sky.")
                             
                             <p style="background-color: #f0f8ff; padding: 10px; border-radius: 5px;"><strong>As a final step, please visit the #share-your-work channel on Discord to let us know you've completed the prep, share your experience, and any Google Colab links you've worked on.</strong></p>
                              <div style="text-align: center; margin-top: 1rem;">
-                                <a href="https://discord.gg/RRgVfzsG3P" target="_blank" class="join-discord-button">Discord Link</a>
+                                <a href="https://discord.gg/RRgVfzsG3P" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background-color: #7C3AED; color: white; text-decoration: none; border-radius: 0.25rem;">Discord Link</a>
                             </div>
                          
                            
