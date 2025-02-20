@@ -9,7 +9,7 @@ const chapters = [
                     
                         <section class="post-section">
                             <h2>Course Overview</h2>
-                            <p>Welcome to the AI Python 101 crash course! This beginner-friendly program is designed to introduce you to Python programming and essential tools used in AI development. To make the most of your learning, we recommend completing some foundational tasks before diving in.</p>
+                            <p>Welcome to the AI Python 101 crash course! You will be introduced to Python programming and AI-assisted coding in order to support you in your journey to build awesome AI applications. </p>
                         </section>
                          <section class="post-section">
                             <h2>Getting Ready</h2>
