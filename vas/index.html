@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAS - Build your AI Idea in Six Weeks</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0 auto;
+            padding: 0 1rem;
+            max-width: 100%;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1f35 0%, #2a2f66 100%);
+            color: white;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .logo {
+            color: #7dd3fc;
+            font-size: 1.75rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .login-btn {
+            text-decoration: none;
+            color: #7dd3fc;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            position: relative;
+            background: transparent;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 1rem;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .highlight {
+            background-color: rgba(125, 211, 252, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: #7dd3fc;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            background-color: #7dd3fc;
+            color: #1a1f35;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #93dcfd;
+            transform: translateY(-2px);
+        }
+
+        .decorative-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .login-container {
+            background: #1a1f35;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #7dd3fc33;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .login-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .login-header h2 {
+            color: white;
+            margin-bottom: 0.75rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .login-header p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #7dd3fc33;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background: #2a2f66;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .login-form input::placeholder {
+            color: #94a3b8;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: right;
+            color: #7dd3fc;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .sign-in-btn {
+            width: 100%;
+            background-color: #7dd3fc;
+            color: #1a1f35;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .sign-in-btn:hover {
+            background-color: #93dcfd;
+            transform: translateY(-2px);
+        }
+
+        .login-logo {
+            color: #7dd3fc;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+        }
+
+        .course-card h3 {
+            font-size: 1.25rem;
+            margin: 0 0 1rem 0;
+            color: #1a1f35;
+        }
+
+        .course-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                max-width: 50%;
+            }
+
+            .navbar {
+                flex-direction: row;
+            }
+
+            .hero {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">VAS</a>
+        <!-- <a href="/login" class="login-btn">Login</a> -->
+    </nav>
+
+    <main class="hero">
+        <div class="decorative-elements">
+            <!-- Add SVG or img elements for the decorative graphics -->
+        </div>
+        <div style="display: flex; align-items: center; gap: 4rem;">
+            <img src="images/bg_removed.png" alt="Hero illustration" style="max-width: 200px; height: auto;">
+            <div class="hero-content">
+                <h1>Welcome to <span class="highlight">VAS</span> Cohort 2</h1>
+                <p>Build your AI project with us from Feb 22nd to Apr 4th. Join our Discord for support, attend weekly sessions, and demo your work to win prizes!</p>
+                <!-- <a href="#" class="cta-button" onclick="document.getElementById('loginModal').style.display = 'block'; return false;">Login</a> -->
+            </div>
+            <img src="images/bg_removed_2.png" alt="Second hero illustration" style="max-width: 200px; height: auto;">
+        </div>
+    </main>
+
+    <div class="login-modal" id="loginModal">
+        <div class="login-container">
+            <a href="/" class="login-logo">VAS</a>
+            <div class="login-header">
+                <h2>Sign in</h2>
+                <p>Sign in to your account to get access</p>
+            </div>
+            <form class="login-form">
+                <input type="email" placeholder="Email" value="admin@gmail.com" required>
+                <input type="password" placeholder="Password" value="admin" required>
+                <a href="/forgot-password" class="forgot-password">Forgot password?</a>
+                <button type="submit" class="sign-in-btn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            
+            if (email === 'admin@gmail.com' && password === 'admin') {
+                // Hide login modal and hero section
+                document.getElementById('loginModal').style.display = 'none';
+                document.querySelector('.hero').style.display = 'none';
+                
+                // Create and show courses grid
+                const mainContent = document.createElement('main');
+                mainContent.innerHTML = `
+                    <h1 style="margin: 2rem 0;">Hey, Sam! 👋</h1>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                        ${createCourseCard('Art', 'Learn how to understand the world around you using the power of art.')}
+                        ${createCourseCard('Biology', 'Delve into the heartbeat of nature, from the smallest cells to the largest ecosystems.')}
+                        ${createCourseCard('History', 'Discover the main events and characters that shaped humankind into what we are now.')}
+                        ${createCourseCard('Literature', 'Experience the world through the stories we tell.')}
+                        ${createCourseCard('Logic', 'Up your deduction game to find a way out of any logical dead end.')}
+                        ${createCourseCard('Math', 'Demystify crucial math concepts and shortcuts for solving real-life problems.')}
+                    </div>
+                `;
+                document.body.insertBefore(mainContent, document.body.children[1]);
+            } else {
+                alert('Invalid credentials. Please try admin/admin');
+            }
+        });
+
+        function createCourseCard(title, description) {
+            return `
+                <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="showCourseDetail('${title}')">
+                    <h3 style="margin: 0 0 0.5rem 0;">${title}</h3>
+                    <p style="color: #666; margin: 0;">${description}</p>
+                </div>
+            `;
+        }
+
+        function showCourseDetail(title) {
+            const mainContent = document.querySelector('main');
+            const courseContent = `
+                <div style="padding: 2rem 0;">
+                    <button onclick="goBack()" style="background: none; border: none; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-bottom: 2rem;">
+                        <span style="color: #666;">← Back</span>
+                    </button>
+                    
+                    <h1>${title}</h1>
+                    <p style="color: #666; margin-bottom: 2rem;">Learn how to understand the world around you using the power of ${title.toLowerCase()}.</p>
+                    
+                    <button onclick="showSubmissionsFeed('${title}')" style="background: #7dd3fc; color: #1a1f35; padding: 0.8rem 1.5rem; border: none; border-radius: 6px; cursor: pointer; margin-bottom: 1rem;">
+                        See Submissions
+                    </button>
+
+                    <div style="margin-top: 3rem;">
+                        <h2>Assignments</h2>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                            ${createLessonCard('A1', 'Create your first artwork', false)}
+                            ${createLessonCard('A2', 'Analyze a famous painting', false)}
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 3rem;">
+                        <h2>Art Basics</h2>
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;">
+                            ${createLessonCard(1, 'Your art journey starts here', true)}
+                            ${createLessonCard(2, 'Why do artworks cost so much?', false)}
+                            ${createLessonCard(3, 'Can anyone do abstract art?', false)}
+                        </div>
+                    </div>
+                </div>
+            `;
+            mainContent.innerHTML = courseContent;
+        }
+
+        function showSubmissionsFeed(courseTitle) {
+            const mainContent = document.querySelector('main');
+            const feedContent = `
+                <div style="padding: 2rem 0;">
+                    <button onclick="showCourseDetail('${courseTitle}')" style="background: none; border: none; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-bottom: 2rem;">
+                        <span style="color: #666;">← Back to ${courseTitle}</span>
+                    </button>
+
+                    <h1>${courseTitle} Submissions</h1>
+
+                    <!-- New Post Creation Form -->
+                    <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin: 2rem 0;">
+                        <form onsubmit="createNewPost(event)" id="newPostForm" style="width: 100%; box-sizing: border-box;">
+                            <textarea 
+                                placeholder="Share your work or thoughts..."
+                                style="width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1rem; resize: vertical; box-sizing: border-box;"
+                            ></textarea>
+                            <div style="display: flex; gap: 1rem; align-items: center;">
+                                <label style="cursor: pointer; color: #666; display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>📎</span>
+                                    <span>Attach File</span>
+                                    <input type="file" style="display: none;" onchange="handleFileSelect(this)">
+                                </label>
+                                <div id="filePreview" style="flex-grow: 1;"></div>
+                                <button type="submit" style="background: #7dd3fc; color: #1a1f35; padding: 0.8rem 1.5rem; border: none; border-radius: 6px; cursor: pointer;">
+                                    Post
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="submission-feed" style="margin-top: 2rem;">
+                        ${createSubmissionPost({
+                            author: "Sarah Chen",
+                            time: "2h",
+                            content: "Just completed my first artwork! Really enjoyed exploring different techniques 🎨",
+                            likes: 24,
+                            comments: [
+                                { author: "Mike Johnson", content: "This looks amazing! Great work!", time: "1h" },
+                                { author: "Lisa Wong", content: "Love the color choices!", time: "30m" }
+                            ],
+                            avatar: "SC",
+                            id: "post1"
+                        })}
+                        ${createSubmissionPost({
+                            author: "Mike Johnson",
+                            time: "5h",
+                            content: "Here's my analysis of Van Gogh's Starry Night. The swirling patterns really emphasize the emotional depth...",
+                            likes: 18,
+                            comments: [
+                                { author: "Sarah Chen", content: "Great analysis! I never thought about it that way.", time: "4h" }
+                            ],
+                            avatar: "MJ",
+                            id: "post2"
+                        })}
+                    </div>
+                </div>
+            `;
+            mainContent.innerHTML = feedContent;
+        }
+
+        function createSubmissionPost({ author, time, content, likes, comments, avatar, id, attachment }) {
+            const isYourPost = author.startsWith('You');
+            const hasYourComment = !isYourPost && comments.some(comment => comment.author.startsWith('You'));
+            const formattedContent = formatContent(content);
+            return `
+                <div data-author="${author}" style="
+                    background: ${isYourPost ? '#f0fdf4' : hasYourComment ? '#fefce8' : 'white'}; 
+                    border-radius: 12px; 
+                    padding: 1.5rem; 
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+                    margin-bottom: 1.5rem;
+                    ${isYourPost ? 'border-left: 4px solid #22c55e;' : 
+                      hasYourComment ? 'border-left: 4px solid #eab308;' : ''}
+                ">
+                    <div style="display: flex; align-items: center; margin-bottom: 1.5rem;">
+                        <div style="width: 40px; height: 40px; border-radius: 20px; background: #7dd3fc; color: #1a1f35; display: flex; align-items: center; justify-content: center; font-weight: 500; margin-right: 1rem;">
+                            ${avatar}
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <div style="font-weight: 600; color: #1a1f35; font-size: 1.1rem;">${author}</div>
+                            <div style="color: #666; font-size: 0.9rem;">${time}</div>
+                        </div>
+                        ${author === 'You' ? `
+                            <button onclick="editPost('${id}')" style="background: none; border: none; color: #666; cursor: pointer; padding: 8px; border-radius: 4px; transition: background 0.2s;">
+                                ✏️
+                            </button>
+                        ` : ''}
+                    </div>
+                    <div class="post-content" id="content-${id}" style="margin-bottom: 1rem;">
+                        <div style="color: #333; margin: 0 0 1rem 0; white-space: pre-wrap; line-height: 1.5;">${formattedContent}</div>
+                        ${attachment ? `
+                            <div style="margin: 1rem 0; background: #f8f9fa; border-radius: 8px; overflow: hidden;">
+                                ${attachment}
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="post-edit" id="edit-${id}" style="display: none;">
+                        <textarea 
+                            style="width: 100%; min-height: 100px; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 1rem; resize: vertical; font-family: inherit; box-sizing: border-box;"
+                        >${content}</textarea>
+                        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+                            <button onclick="cancelEdit('${id}')" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: 4px; background: white; cursor: pointer; transition: background 0.2s;">
+                                Cancel
+                            </button>
+                            <button onclick="saveEdit('${id}')" style="padding: 0.5rem 1rem; border: none; border-radius: 4px; background: #7dd3fc; color: #1a1f35; cursor: pointer; transition: opacity 0.2s;">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1.5rem; color: #666; margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
+                        <button onclick="toggleLike(this)" style="display: flex; align-items: center; gap: 0.5rem; border: none; background: none; cursor: pointer; color: #666; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;">
+                            <span class="like-icon" style="opacity: 0.5;">👍</span>
+                            <span class="like-count">${likes}</span>
+                        </button>
+                        <button onclick="toggleComments('${id}')" style="display: flex; align-items: center; gap: 0.5rem; border: none; background: none; cursor: pointer; color: #666; padding: 4px 8px; border-radius: 4px; transition: background 0.2s;">
+                            <span>💬</span>
+                            <span>${comments.length}</span>
+                        </button>
+                    </div>
+                    <div id="comments-${id}" style="display: none; margin-top: 1rem; border-top: 1px solid #eee; padding-top: 1rem;">
+                        ${comments.map(comment => createComment(comment)).join('')}
+                        <form onsubmit="addComment(event, '${id}')" style="margin-top: 1rem; display: flex; gap: 1rem;">
+                            <input type="text" placeholder="Write a comment..." style="flex-grow: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 0.95rem;">
+                            <button type="submit" style="background: #7dd3fc; color: #1a1f35; padding: 0.75rem 1.25rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 500; transition: opacity 0.2s;">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatContent(content) {
+            // Convert URLs to clickable links
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            content = content.replace(urlRegex, url => `<a href="${url}" target="_blank" style="color: #7dd3fc; text-decoration: none;">${url}</a>`);
+            
+            // Convert line breaks to <br> tags
+            content = content.replace(/\n/g, '<br>');
+            
+            return content;
+        }
+
+        function createImageAttachment(src) {
+            return `
+                <div style="position: relative;">
+                    <img src="${src}" 
+                         style="max-width: 100%; max-height: 400px; object-fit: contain; cursor: pointer;" 
+                         onclick="openImageModal('${src}')"
+                    >
+                </div>
+            `;
+        }
+
+        function createFileAttachment(file) {
+            const icon = getFileIcon(file.type);
+            return `
+                <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 4px;">
+                    <div style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #e9ecef; border-radius: 4px; font-size: 24px;">
+                        ${icon}
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <div style="font-weight: 500; color: #1a1f35;">${file.name}</div>
+                        <div style="color: #666; font-size: 0.9rem;">${formatFileSize(file.size)}</div>
+                    </div>
+                    <a href="#" onclick="downloadFile('${file.name}')" style="color: #7dd3fc; text-decoration: none;">
+                        Download
+                    </a>
+                </div>
+            `;
+        }
+
+        function createComment({ author, content, time }) {
+            return `
+                <div style="margin-top: 1rem; padding-left: 1rem; border-left: 2px solid #eee;">
+                    <div style="font-weight: 500;">${author} <span style="color: #666; font-weight: normal; font-size: 0.9rem;">${time}</span></div>
+                    <div style="color: #333;">${content}</div>
+                </div>
+            `;
+        }
+
+        function toggleComments(postId) {
+            const commentsSection = document.getElementById(`comments-${postId}`);
+            commentsSection.style.display = commentsSection.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function addComment(event, postId) {
+            event.preventDefault();
+            const form = event.target;
+            const input = form.querySelector('input');
+            const comment = input.value;
+            
+            if (comment.trim()) {
+                const commentsSection = document.getElementById(`comments-${postId}`);
+                const newComment = createComment({
+                    author: "You (Sam)",
+                    content: comment,
+                    time: "Just now"
+                });
+                
+                commentsSection.insertAdjacentHTML('beforeend', newComment);
+                input.value = '';
+            }
+        }
+
+        function handleFileSelect(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const preview = document.getElementById('filePreview');
+            preview.innerHTML = ''; // Clear previous preview
+
+            if (file.type.startsWith('image/')) {
+                // Handle image files
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem; background: #f8f9fa; padding: 0.5rem; border-radius: 4px;">
+                            <img src="${e.target.result}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                            <div>
+                                <div style="font-weight: 500;">${file.name}</div>
+                                <div style="color: #666; font-size: 0.9rem;">${formatFileSize(file.size)}</div>
+                            </div>
+                            <button onclick="clearFileInput(this)" type="button" style="margin-left: auto; background: none; border: none; color: #666; cursor: pointer;">✕</button>
+                        </div>
+                    `;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // Handle other file types
+                const fileIcon = getFileIcon(file.type);
+                preview.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem; background: #f8f9fa; padding: 0.5rem; border-radius: 4px;">
+                        <div style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: #e9ecef; border-radius: 4px; font-size: 24px;">
+                            ${fileIcon}
+                        </div>
+                        <div>
+                            <div style="font-weight: 500;">${file.name}</div>
+                            <div style="color: #666; font-size: 0.9rem;">${formatFileSize(file.size)}</div>
+                        </div>
+                        <button onclick="clearFileInput(this)" type="button" style="margin-left: auto; background: none; border: none; color: #666; cursor: pointer;">✕</button>
+                    </div>
+                `;
+            }
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileIcon(mimeType) {
+            const icons = {
+                'application/pdf': '📄',
+                'application/msword': '📝',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '📝',
+                'application/vnd.ms-excel': '📊',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': '📊',
+                'application/vnd.ms-powerpoint': '📽️',
+                'application/vnd.openxmlformats-officedocument.presentationml.presentation': '📽️',
+                'text/plain': '📝',
+                'video/': '🎥',
+                'audio/': '🎵',
+                'application/zip': '📦',
+                'application/x-rar-compressed': '📦',
+                'default': '📎'
+            };
+
+            for (const [type, icon] of Object.entries(icons)) {
+                if (mimeType.startsWith(type)) return icon;
+            }
+            return icons.default;
+        }
+
+        function clearFileInput(button) {
+            const preview = document.getElementById('filePreview');
+            preview.innerHTML = '';
+            const fileInput = document.querySelector('input[type="file"]');
+            fileInput.value = '';
+        }
+
+        function createNewPost(event) {
+            event.preventDefault();
+            const form = event.target;
+            const content = form.querySelector('textarea').value.trim();
+            const file = form.querySelector('input[type="file"]').files[0];
+            
+            // Check if user already has a post
+            const existingPost = document.querySelector('.submission-feed').querySelector('[data-author="You"]');
+            if (existingPost) {
+                // Show error message
+                const errorMessage = document.createElement('div');
+                errorMessage.textContent = 'You can only have one post at a time. Please edit your existing post instead.';
+                errorMessage.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    background: #ff4444;
+                    color: white;
+                    padding: 1rem;
+                    border-radius: 4px;
+                    animation: fadeOut 3s forwards;
+                    z-index: 1000;
+                `;
+                document.body.appendChild(errorMessage);
+                setTimeout(() => {
+                    document.body.removeChild(errorMessage);
+                }, 3000);
+                return;
+            }
+
+            if (!content) {
+                // Add visual feedback for empty content
+                const textarea = form.querySelector('textarea');
+                textarea.style.borderColor = '#ff4444';
+                setTimeout(() => {
+                    textarea.style.borderColor = '#ddd';
+                }, 2000);
+                return;
+            }
+
+            const feed = document.querySelector('.submission-feed');
+            const postId = `post-${Date.now()}`;
+
+            if (file) {
+                handleFileAttachment(file, content, feed, postId, form);
+            } else {
+                addPostToFeed(content, '', feed, postId, form);
+            }
+        }
+
+        function handleFileAttachment(file, content, feed, postId, form) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const attachment = createImageAttachment(e.target.result);
+                    addPostToFeed(content, attachment, feed, postId, form);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                const attachment = createFileAttachment(file);
+                addPostToFeed(content, attachment, feed, postId, form);
+            }
+        }
+
+        function addPostToFeed(content, attachment, feed, postId, form) {
+            const newPost = createSubmissionPost({
+                author: "You (Sam)",
+                time: "Just now",
+                content: content,
+                likes: 0,
+                comments: [],
+                avatar: "YO",
+                id: postId,
+                attachment: attachment
+            });
+            
+            feed.insertAdjacentHTML('afterbegin', newPost);
+            form.reset();
+            document.getElementById('filePreview').innerHTML = '';
+
+            // Add success feedback
+            const successMessage = document.createElement('div');
+            successMessage.textContent = 'Post created successfully!';
+            successMessage.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #4CAF50;
+                color: white;
+                padding: 1rem;
+                border-radius: 4px;
+                animation: fadeOut 3s forwards;
+            `;
+            document.body.appendChild(successMessage);
+            setTimeout(() => {
+                document.body.removeChild(successMessage);
+            }, 3000);
+        }
+
+        function toggleLike(button) {
+            const countSpan = button.querySelector('.like-count');
+            const currentLikes = parseInt(countSpan.textContent);
+            const icon = button.querySelector('.like-icon');
+            
+            if (button.classList.contains('liked')) {
+                countSpan.textContent = currentLikes - 1;
+                button.classList.remove('liked');
+                button.style.color = '#666';
+                icon.style.opacity = '0.5';
+            } else {
+                countSpan.textContent = currentLikes + 1;
+                button.classList.add('liked');
+                button.style.color = '#7dd3fc';
+                icon.style.opacity = '1';
+            }
+        }
+
+        function createLessonCard(number, title, completed) {
+            return `
+                <div style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); cursor: pointer;" onclick="toggleLessonComplete(this)">
+                    <div style="width: 48px; height: 48px; background: #f8f9fa; border-radius: 8px;"></div>
+                    <div style="flex-grow: 1;">
+                        <div style="color: #666; font-size: 0.9rem;">LESSON ${number}</div>
+                        <div style="font-weight: 500;">${title}</div>
+                    </div>
+                    <div class="completion-status" style="color: #4CAF50; ${completed ? '' : 'opacity: 0;'}">✓</div>
+                </div>
+            `;
+        }
+
+        function toggleLessonComplete(element) {
+            const checkmark = element.querySelector('.completion-status');
+            if (checkmark.style.opacity === '0') {
+                checkmark.style.opacity = '1';
+            } else {
+                checkmark.style.opacity = '0';
+            }
+        }
+
+        function goBack() {
+            location.reload();
+        }
+
+        document.querySelector('.login-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginModal').style.display = 'block';
+        });
+
+        document.querySelector('.login-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        function openImageModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                cursor: pointer;
+            `;
+            
+            const img = document.createElement('img');
+            img.src = imageSrc;
+            img.style.cssText = `
+                max-width: 90%;
+                max-height: 90vh;
+                object-fit: contain;
+            `;
+
+            const downloadBtn = document.createElement('a');
+            downloadBtn.href = imageSrc;
+            downloadBtn.download = 'image';
+            downloadBtn.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.9);
+                padding: 8px 16px;
+                border-radius: 6px;
+                text-decoration: none;
+                color: #7dd3fc;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                z-index: 1001;
+            `;
+            downloadBtn.innerHTML = '<span>⬇️</span><span>Download</span>';
+            downloadBtn.onclick = (e) => e.stopPropagation();
+            
+            modal.appendChild(img);
+            modal.appendChild(downloadBtn);
+            document.body.appendChild(modal);
+            
+            modal.onclick = () => {
+                document.body.removeChild(modal);
+            };
+        }
+
+        function editPost(postId) {
+            const contentDiv = document.getElementById(`content-${postId}`);
+            const editDiv = document.getElementById(`edit-${postId}`);
+            contentDiv.style.display = 'none';
+            editDiv.style.display = 'block';
+        }
+
+        function cancelEdit(postId) {
+            const contentDiv = document.getElementById(`content-${postId}`);
+            const editDiv = document.getElementById(`edit-${postId}`);
+            contentDiv.style.display = 'block';
+            editDiv.style.display = 'none';
+        }
+
+        function saveEdit(postId) {
+            const contentDiv = document.getElementById(`content-${postId}`);
+            const editDiv = document.getElementById(`edit-${postId}`);
+            const newContent = editDiv.querySelector('textarea').value.trim();
+            
+            if (newContent) {
+                contentDiv.innerHTML = newContent;
+                editDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
