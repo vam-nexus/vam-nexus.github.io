@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Choice Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="{{ url_for('index_page') }}" class="logo">
+            <i class="fas fa-brain"></i>
+            Insight
+        </a>
+        <nav class="nav-links">
+            <a href="{{ url_for('index_page') }}" class="home-link">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="left-side" id="quiz-info">
+            <!-- Quiz information will be loaded here -->
+        </div>
+        <div class="quiz-container">
+            <div class="quiz-title">
+                <h1 id="quiz-title"></h1>
+                <p id="quiz-description"></p>
+            </div>
+            
+            <div id="quiz">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+            
+            <div class="progress-bars">
+                <div class="progress-label" style="font-size: 1.2em; font-weight: bold; margin-bottom: 15px;">
+                    Score: <span id="score-percentage">0</span>% | 
+                    Remaining: <span id="remaining-count"><span id="total-questions"></span></span> Questions
+                </div>
+                <div class="progress-label">Correct Answers: <span id="correct-count">0</span> of <span id="total-questions"></span></div>
+                <div class="progress-bar">
+                    <div id="correct-progress" class="progress-fill progress-correct" style="width: 0%"></div>
+                </div>
+                <div class="progress-label">Incorrect Answers: <span id="incorrect-count">0</span> of <span id="total-questions"></span></div>
+                <div class="progress-bar">
+                    <div id="incorrect-progress" class="progress-fill progress-incorrect" style="width: 0%"></div>
+                </div>
+            </div>
+            <button id="submit-button">Submit Quiz</button>
+        </div>
+    </div>
+
+    <script src="history_of_nye_celebrations.js"></script>
+    <script src="funcs.js"></script>
+</body>
+</html>
