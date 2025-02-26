@@ -7,30 +7,53 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0 auto;
-            padding: 0 1rem;
-            max-width: 100%;
-            width: 100%;
+            margin: 0;
+            padding: 0;
             background: linear-gradient(135deg, #1a1f35 0%, #2a2f66 100%);
             color: white;
             font-size: 16px;
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .navbar {
+            width: 100%;
+            margin-bottom: 2rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
-            flex-direction: column;
-            gap: 1rem;
         }
 
         .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
             color: #7dd3fc;
-            font-size: 1.75rem;
-            font-weight: bold;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 300px;
+            white-space: nowrap;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: #7dd3fc;
         }
 
         .login-btn {
@@ -227,80 +250,536 @@
             line-height: 1.6;
         }
 
-        @media (min-width: 768px) {
-            body {
-                max-width: 50%;
+        .dashboard-layout {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: center;
+        }
+
+        .course-nav, .sidebar {
+            display: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 2rem;
+            color: white;
+            letter-spacing: -0.5px;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .module-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.75rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: visible;
+            width: 40vw;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .module-card.completed {
+            background: rgba(34, 197, 94, 0.05);
+            border-color: rgba(34, 197, 94, 0.2);
+        }
+
+        .module-card.completed .task-content {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        .module-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 1rem;
+            color: #7dd3fc;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-number {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            background: #1a1f35;
+            color: #7dd3fc;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            border: 2px solid #7dd3fc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .task-checkbox {
+            position: absolute;
+            top: 1.75rem;
+            right: 1.75rem;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(125, 211, 252, 0.5);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .task-checkbox:checked {
+            background-color: #22c55e;
+            border-color: #22c55e;
+        }
+
+        .task-checkbox:checked::before {
+            content: "✓";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 16px;
+        }
+
+        .task-checkbox:hover {
+            border-color: #7dd3fc;
+        }
+
+        .task-content {
+            color: #94a3b8;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: all 0.2s ease;
+        }
+
+        .task-content a {
+            color: #7dd3fc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .task-content a:hover {
+            color: #93dcfd;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
             }
 
-            .navbar {
-                flex-direction: row;
+            .course-nav, .sidebar {
+                position: relative;
+                top: 0;
+                max-width: 600px;
+                margin: 0 auto 2rem;
+                width: 100%;
             }
+        }
 
-            .hero {
-                flex-direction: row;
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+                padding: 1rem;
             }
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 2rem;
+            height: calc(100vh - 4rem);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        .date-item {
+            padding: 0.5rem;
+            margin-bottom: 0.25rem;
+            border-radius: 8px;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .date-item strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .date-item p {
+            margin: 0.25rem 0;
+        }
+
+        .sidebar h3 {
+            margin: 0.75rem 0 0.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            color: white;
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        .task-content .rsvp-button,
+        .rsvp-button {
+            display: inline-block;
+            background-color: #3b718b;
+            color: white !important;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .task-content .rsvp-button:hover,
+        .rsvp-button:hover {
+            background-color: #3a667b;
+            transform: translateY(-2px);
+            color: white !important;
+        }
+
+        .task-content a.rsvp-button {
+            color: white !important;
+        }
+
+        .section-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .navbar-spacer {
+            width: 200px;
+        }
+
+        .navbar-sections {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-sections li {
+            cursor: pointer;
+            color: #7dd3fc;
+            transition: color 0.2s ease;
+        }
+
+        .navbar-sections li.active {
+            color: #93dcfd;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <a href="/" class="logo">VAS</a>
-        <!-- <a href="/login" class="login-btn">Login</a> -->
-    </nav>
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2zm0 2.5L18.5 11H17v9h-2v-6H9v6H7v-9H5.5L12 4.5z"/>
+                </svg>
+                Vancouver AI Space
+            </a>
+            <ul class="navbar-sections">
+                <li onclick="showWeek('events', this)">Important Dates & Events</li>
+                <li onclick="showWeek('week0', this)">Week 0 - Warmup</li>
+                <li onclick="showWeek('week1', this)">Week 1 - Tasks</li>
+            </ul>
+            <div class="navbar-spacer"></div>
+        </nav>
 
-    <main class="hero">
-        <div class="decorative-elements">
-            <!-- Add SVG or img elements for the decorative graphics -->
-        </div>
-        <div style="display: flex; align-items: center; gap: 4rem;">
-            <img src="images/bg_removed.png" alt="Hero illustration" style="max-width: 200px; height: auto;">
-            <div class="hero-content">
-                <h1>Welcome to <span class="highlight">VAS</span> Cohort 2</h1>
-                <p>Build your AI project with us from Feb 22nd to Apr 4th. Join our Discord for support, attend weekly sessions, and demo your work to win prizes!</p>
-                <!-- <a href="#" class="cta-button" onclick="document.getElementById('loginModal').style.display = 'block'; return false;">Login</a> -->
-            </div>
-            <img src="images/bg_removed_2.png" alt="Second hero illustration" style="max-width: 200px; height: auto;">
-        </div>
-    </main>
+        <div class="dashboard-layout">
+            <h1 id="section-headline" class="section-title">Week 1 - Tasks</h1>
+            <div class="main-content">
+                <div id="events" style="display: none;">
+                    <div class="module-card">
+                        <span class="card-number">1/2</span>
+                        <h3>Presentation Dates</h3>
+                        <div class="task-content">
+                            <p><strong>1. Presenting Your Idea Day</strong><br>
+                            March 7th, 2024 5:30PM<br>
+                            <a href="https://lu.ma/fgxe7kg3" target="_blank" class="rsvp-button">RSVP Here</a></p>
 
-    <div class="login-modal" id="loginModal">
-        <div class="login-container">
-            <a href="/" class="login-logo">VAS</a>
-            <div class="login-header">
-                <h2>Sign in</h2>
-                <p>Sign in to your account to get access</p>
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>2. Final Presentation Demo Day</strong><br>
+                            April 22nd, 2024 5:30PM<br>
+                            <a href="https://lu.ma/xe31ibzc" target="_blank" class="rsvp-button">RSVP Here</a></p>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">2/2</span>
+                        <h3>Week 1 Events</h3>
+                        <div class="task-content">
+                            <p><strong>1. Building Agentic AI Lecture</strong><br>
+                            Mondays 5:30-6:30PM<br>
+                            <a href="https://lu.ma/37dfdxsa" target="_blank" class="rsvp-button">RSVP Here</a></p>
+
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>2. Building Agentic AI Lecture (Repeat)</strong><br>
+                            Wednesdays 5:30-6:30PM<br>
+                            <a href="https://lu.ma/wylg6lor" target="_blank" class="rsvp-button">RSVP Here</a></p>
+
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>3. AI & Chill Co-working (Online/In-person)</strong><br>
+                            Tuesdays 5:30-7:00PM<br>
+                            <a href="https://lu.ma/eca0q9wp" target="_blank" class="rsvp-button">RSVP Here</a></p>
+
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>4. AI & Chill Co-working (Online/In-person)</strong><br>
+                            Thursdays 5:30-7:00PM<br>
+                            <a href="https://lu.ma/l4w4rd94" target="_blank" class="rsvp-button">RSVP Here</a></p>
+
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>5. Online Office Hours</strong><br>
+                            Saturdays 11:00AM-12:15PM<br>
+                            <a href="https://lu.ma/535m9p4m" target="_blank" class="rsvp-button">RSVP Here</a></p>
+
+                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
+
+                            <p><strong>6. Boardgames & Chill</strong><br>
+                            Saturdays 5:30-9:00PM<br>
+                            <a href="https://lu.ma/mzqvilsn" target="_blank" class="rsvp-button">RSVP Here</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="week0" style="display: none;">
+                    <div class="module-card">
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>👋 Course Introduction</h3>
+                        <div class="task-content">
+                            Watch the welcome video and join our Discord community
+                        </div>
+                    </div>
+                    <div class="module-card">
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🔧 Setup Development Environment</h3>
+                        <div class="task-content">
+                            Install Python and required tools
+                        </div>
+                    </div>
+                </div>
+                <div id="week1" style="display: block;">
+                    <div class="module-card">
+                        <span class="card-number">1/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🐍 Python Warm-up</h3>
+                        <div class="task-content">
+                            Complete <a href="https://codingbat.com/python">WarmUp 1 & WarmUp 2</a>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">2/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>💡 Idea Feedback</h3>
+                        <div class="task-content">
+                            Review and provide feedback on 3-5 ideas in #share-your-ideas
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">3/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🚢 Titanic Dataset Analysis</h3>
+                        <div class="task-content">
+                            Complete <a href="https://colab.research.google.com/drive/1Zb2KyUfqgtsjMfJkJ7JjWCQKQSiRIkI4">Exercise 32</a> using ChatGPT
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">4/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🌍 Share Your Journey</h3>
+                        <div class="task-content">
+                            Post about starting the program on LinkedIn with #VAM
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">5/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🤖 AI Chatbot</h3>
+                        <div class="task-content">
+                            Build your specialized chatbot using <a href="https://colab.research.google.com/drive/1nV5txjioTE2-6WszKBIBkMnSb0Tz7a3Y">this notebook</a>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">6/6</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>📧 Email Processing System</h3>
+                        <div class="task-content">
+                            Create an email processing system using <a href="https://colab.research.google.com/drive/1bDpdyUE8CHESJ94iYgKws-U903SktfH8">this notebook</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form class="login-form">
-                <input type="email" placeholder="Email" value="admin@gmail.com" required>
-                <input type="password" placeholder="Password" value="admin" required>
-                <a href="/forgot-password" class="forgot-password">Forgot password?</a>
-                <button type="submit" class="sign-in-btn">Sign In</button>
-            </form>
         </div>
     </div>
 
     <script>
         document.querySelector('.login-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
+            const username = this.querySelector('input[type="text"]').value;
             const password = this.querySelector('input[type="password"]').value;
             
-            if (email === 'admin@gmail.com' && password === 'admin') {
-                // Hide login modal and hero section
+            // Simple authentication check - replace with your actual authentication logic
+            if (username === 'admin' && password === 'admin') {
                 document.getElementById('loginModal').style.display = 'none';
                 document.querySelector('.hero').style.display = 'none';
                 
-                // Create and show courses grid
                 const mainContent = document.createElement('main');
                 mainContent.innerHTML = `
-                    <h1 style="margin: 2rem 0;">Hey, Sam! 👋</h1>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
-                        ${createCourseCard('Art', 'Learn how to understand the world around you using the power of art.')}
-                        ${createCourseCard('Biology', 'Delve into the heartbeat of nature, from the smallest cells to the largest ecosystems.')}
-                        ${createCourseCard('History', 'Discover the main events and characters that shaped humankind into what we are now.')}
-                        ${createCourseCard('Literature', 'Experience the world through the stories we tell.')}
-                        ${createCourseCard('Logic', 'Up your deduction game to find a way out of any logical dead end.')}
-                        ${createCourseCard('Math', 'Demystify crucial math concepts and shortcuts for solving real-life problems.')}
+                    <div class="dashboard-layout">
+                        <div class="sidebar">
+                            <h1 class="section-title">Important Dates & Events</h1>
+                            <h3>Special Events</h3>
+                            <div class="date-item">
+                                <strong>Presenting Your Idea Day</strong>
+                                <p>March 7th, 2024 5:30PM</p>
+                                <a href="https://lu.ma/fgxe7kg3" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>Final Presentation Demo Day</strong>
+                                <p>April 22nd, 2024 5:30PM</p>
+                                <a href="https://lu.ma/xe31ibzc" target="_blank">RSVP Here (Free with coupon: MF7PD0)</a>
+                            </div>
+                            
+                            <h3>Week 1 Events</h3>
+                            <div class="date-item">
+                                <strong>Building Agentic AI Lecture</strong>
+                                <p>Mondays 5:30-6:30PM</p>
+                                <a href="https://lu.ma/37dfdxsa" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>Building Agentic AI Lecture (Repeat)</strong>
+                                <p>Wednesdays 5:30-6:30PM</p>
+                                <a href="https://lu.ma/wylg6lor" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>AI & Chill Co-working (Online/In-person)</strong>
+                                <p>Tuesdays 5:30-7:00PM</p>
+                                <a href="https://lu.ma/eca0q9wp" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>AI & Chill Co-working (Online/In-person)</strong>
+                                <p>Thursdays 5:30-7:00PM</p>
+                                <a href="https://lu.ma/l4w4rd94" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>Online Office Hours</strong>
+                                <p>Saturdays 11:00AM-12:15PM</p>
+                                <a href="https://lu.ma/535m9p4m" target="_blank">RSVP Here</a>
+                            </div>
+                            <div class="date-item">
+                                <strong>Boardgames & Chill</strong>
+                                <p>Saturdays 5:30-9:00PM</p>
+                                <a href="https://lu.ma/mzqvilsn" target="_blank">RSVP Here</a>
+                            </div>
+                        </div>
+                        
+                        <div class="main-content">
+                            <h1 class="section-title">Week 1 Tasks</h1>
+                            <div class="module-card">
+                                <h3>🐍 Python Warm-up</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Complete <a href="https://codingbat.com/python">WarmUp 1 & WarmUp 2</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="module-card">
+                                <h3>💡 Idea Feedback</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Review and provide feedback on 3-5 ideas in #share-your-ideas</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="module-card">
+                                <h3>🚢 Titanic Dataset Analysis</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Complete <a href="https://colab.research.google.com/drive/1Zb2KyUfqgtsjMfJkJ7JjWCQKQSiRIkI4">Exercise 32</a> using ChatGPT</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="module-card">
+                                <h3>🌍 Share Your Journey</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Post about starting the program on LinkedIn with #VAM</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="module-card">
+                                <h3>🤖 AI Chatbot</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Build your specialized chatbot using <a href="https://colab.research.google.com/drive/1nV5txjioTE2-6WszKBIBkMnSb0Tz7a3Y">this notebook</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="module-card">
+                                <h3>📧 Email Processing System</h3>
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <span>✅</span>
+                                        <div>Create an email processing system using <a href="https://colab.research.google.com/drive/1bDpdyUE8CHESJ94iYgKws-U903SktfH8">this notebook</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 `;
                 document.body.insertBefore(mainContent, document.body.children[1]);
@@ -308,6 +787,26 @@
                 alert('Invalid credentials. Please try admin/admin');
             }
         });
+
+        function showWeek(weekId, element) {
+            // Hide all weeks
+            document.querySelectorAll('.main-content > div').forEach(div => {
+                div.style.display = 'none';
+            });
+            
+            // Show selected week
+            document.getElementById(weekId).style.display = 'block';
+            
+            // Update active state in navigation
+            document.querySelectorAll('.navbar-sections li').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+
+            // Update the headline text to the chosen week
+            const headline = document.getElementById('section-headline');
+            headline.textContent = element.textContent;
+        }
 
         function createCourseCard(title, description) {
             return `
@@ -606,7 +1105,7 @@
             const k = 1024;
             const sizes = ['Bytes', 'KB', 'MB', 'GB'];
             const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]);
         }
 
         function getFileIcon(mimeType) {
@@ -651,8 +1150,7 @@
                 // Show error message
                 const errorMessage = document.createElement('div');
                 errorMessage.textContent = 'You can only have one post at a time. Please edit your existing post instead.';
-                errorMessage.style.cssText = `
-                    position: fixed;
+                errorMessage.style.cssText = `                    position: fixed;
                     bottom: 20px;
                     right: 20px;
                     background: #ff4444;
@@ -778,6 +1276,8 @@
             }
         }
 
+        
+
         function goBack() {
             location.reload();
         }
@@ -871,6 +1371,50 @@
                 editDiv.style.display = 'none';
             }
         }
+
+        function toggleComplete(checkbox) {
+            const moduleCard = checkbox.closest('.module-card');
+            if (checkbox.checked) {
+                moduleCard.classList.add('completed');
+            } else {
+                moduleCard.classList.remove('completed');
+            }
+            
+            // Save state to localStorage
+            saveProgress();
+        }
+
+        function saveProgress() {
+            const progress = {};
+            document.querySelectorAll('.module-card').forEach((card, index) => {
+                progress[index] = card.querySelector('.task-checkbox').checked;
+            });
+            localStorage.setItem('moduleProgress', JSON.stringify(progress));
+        }
+
+        function loadProgress() {
+            const progress = JSON.parse(localStorage.getItem('moduleProgress') || '{}');
+            document.querySelectorAll('.module-card').forEach((card, index) => {
+                const checkbox = card.querySelector('.task-checkbox');
+                if (progress[index]) {
+                    checkbox.checked = true;
+                    card.classList.add('completed');
+                }
+            });
+        }
+
+        // Load saved progress when page loads
+        document.addEventListener('DOMContentLoaded', loadProgress);
+
+        
+
+        // Initialize the first section as active
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstNavItem = document.querySelector('.navbar-sections li');
+            if (firstNavItem) {
+                firstNavItem.click();
+            }
+        });
     </script>
 </body>
 </html>
