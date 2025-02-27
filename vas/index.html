@@ -887,17 +887,6 @@
             if (week1NavItem) {
                 week1NavItem.click();
             }
-
-            // Add click event listener to module cards
-            document.querySelectorAll('.module-card').forEach(card => {
-                card.addEventListener('click', function(event) {
-                    const checkbox = card.querySelector('.task-checkbox');
-                    if (event.target !== checkbox) { // Ensure the click is not on the checkbox itself
-                        checkbox.checked = !checkbox.checked;
-                        toggleComplete(checkbox);
-                    }
-                });
-            });
         });
     </script>
 </body>
