@@ -520,12 +520,19 @@
 
         .task-content table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
         }
 
         .task-content td {
             padding: 0.5rem;
             vertical-align: top;
+        }
+
+        .task-content td:not(:last-child) {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding-right: 1.5rem;
+            margin-right: 1.5rem;
         }
 
         .rsvp-button {
@@ -567,19 +574,20 @@
                         <span class="card-number">1/4</span>
                         <h3>📅 Important Presentation Dates</h3>
                         <div class="task-content">
-                            <ul>
-                                <li><strong>Presenting Your Idea Day</strong><br>
-                                March 7th, 2024 5:30PM<br>
-                                <a href="https://lu.ma/fgxe7kg3" target="_blank" class="rsvp-button">RSVP Here</a></li>
-                            </ul>
-
-                            <hr style="border: none; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 1rem 0;">
-
-                            <ul>
-                                <li><strong>Final Presentation Demo Day</strong><br>
-                                April 22nd, 2024 5:30PM<br>
-                                <a href="https://lu.ma/xe31ibzc" target="_blank" class="rsvp-button">RSVP Here</a></li>
-                            </ul>
+                            <table>
+                                <tr>
+                                    <td><strong>Presenting Your Idea Day</strong><br>
+                                    📅 Date: March 7th, 2024<br>
+                                    ⏰ Time: 5:30PM<br>
+                                    🏢 Location: Northeastern University - Vancouver<br>
+                                    🔗 Register here: <a href="https://lu.ma/fgxe7kg3" target="_blank" class="rsvp-button">RSVP Here</a></td>
+                                    <td><strong>Final Presentation Demo Day</strong><br>
+                                    📅 Date: April 22nd, 2024<br>
+                                    ⏰ Time: 5:30PM<br>
+                                    🏢 Location: Northeastern University - Vancouver<br>
+                                    🔗 Register here: <a href="https://lu.ma/xe31ibzc" target="_blank" class="rsvp-button">RSVP Here</a></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                     <center>    
@@ -592,12 +600,16 @@
                         <div class="task-content">
                             <table>
                                 <tr>
-                                    <td>📖 <strong>Building Agentic AI Lecture</strong><br>Mondays 5:30-6:30PM</td>
-                                    <td>🔄 <strong>Building Agentic AI Lecture (Repeat)</strong><br>Wednesdays 5:30-6:30PM</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="https://lu.ma/37dfdxsa" target="_blank" class="rsvp-button">RSVP Here</a></td>
-                                    <td><a href="https://lu.ma/wylg6lor" target="_blank" class="rsvp-button">RSVP Here</a></td>
+                                    <td>📖 <strong>Building Agentic AI Lecture</strong><br>
+                                    📅 Date: Monday, Feb 24th<br>
+                                    ⏰ Time: 5:30-6:30PM<br>
+                                    🏢 Location: Online<br>
+                                    🔗 Register here: <a href="https://lu.ma/37dfdxsa" target="_blank" class="rsvp-button">RSVP Here</a></td>
+                                    <td>🔄 <strong>Building Agentic AI Lecture (Repeat)</strong><br>
+                                    📅 Date: Wednesday, Feb 26th<br>
+                                    ⏰ Time: 5:30-6:30PM<br>
+                                    🏢 Location: Online<br>
+                                    🔗 Register here: <a href="https://lu.ma/wylg6lor" target="_blank" class="rsvp-button">RSVP Here</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -610,8 +622,14 @@
                         <div class="task-content">
                             <table>
                                 <tr>
-                                    <td>💻 <strong>AI & Chill Co-working (Online/In-person)</strong><br>Tuesdays 5:30-7:00PM</td>
-                                    <td>🎲 <strong>AI & Chill Co-working (Online/In-person)</strong><br>Thursdays 5:30-7:00PM</td>
+                                    <td>💻 <strong>AI & Chill Co-working</strong><br>
+                                    📅 Date: Tuesday, Feb 25th<br>
+                                    🏢 Location: 93 Coffee, 1789 Comox St, Vancouver<br>
+                                    ⏰ Time: 5:30-7:00PM</td>
+                                    <td>🎲 <strong>AI & Chill Co-working</strong><br>
+                                    📅 Date: Thursday, Feb 27th<br>
+                                    🏢 Location: 93 Coffee, 1789 Comox St, Vancouver<br>
+                                    ⏰ Time: 5:30-7:00PM</td>
                                 </tr>
                                 <tr>
                                     <td><a href="https://lu.ma/eca0q9wp" target="_blank" class="rsvp-button">RSVP Here</a></td>
@@ -628,8 +646,14 @@
                         <div class="task-content">
                             <table>
                                 <tr>
-                                    <td>🕒 <strong>Online Office Hours</strong><br>Saturdays 11:00AM-12:15PM</td>
-                                    <td>🎮 <strong>Boardgames & Chill</strong><br>Saturdays 5:30-9:00PM</td>
+                                    <td>🕒 <strong>Online Office Hours</strong><br>
+                                    📅 Date: Saturday, March 1st<br>
+                                    ⏰ Time: 10:00AM-12:15PM<br>
+                                    🏢 Location: Online</td>
+                                    <td>🎮 <strong>Boardgames & Chill</strong><br>
+                                    📅 Date: Saturday, March 1st<br>
+                                    ⏰ Time: 5:30-9:00PM<br>
+                                    🏢 Location: In-Person</td>
                                 </tr>
                                 <tr>
                                     <td><a href="https://lu.ma/535m9p4m" target="_blank" class="rsvp-button">RSVP Here</a></td>
@@ -688,7 +712,7 @@
                             <h4>📝 Action Items:</h4>
                             <ul>
                                 <li>Write some cool prompt engineering solutions to the exercises <a href="https://colab.research.google.com/drive/1nt33w_syUA0rGfoGNe1BNO92wWZXWe4G?usp=sharing" target="_blank">here</a>.</li>
-                                <li>Share them in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #🏋｜week-0-warmup.</li>
+                                <li>Share them in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #｜week-0-warmup.</li>
                             </ul>
                         </div>
                     </div>
@@ -820,7 +844,50 @@
                     <h4 style="color: white; width: 80%; text-align: left;">
                         Here you can find various resources to help you with your AI projects.</h4>
                     </center>
-                    <!-- Add content for resources here -->
+                    
+                    
+                       <div class="module-card">
+                       
+                        <h3>🎓 Useful Links</h3>
+                        <div class="task-content">
+                            <ul>
+                                <li><a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?usp=sharing" target="_blank">Submission Excel Sheet</a></li>
+                                <li><a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord Link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                      <div class="module-card">
+                       
+                        <h3>🎓 Lectures & Recordings</h3>
+                        <div class="task-content">
+                            <h4>Week 1 Content:</h4>
+                            <ul>
+                                <li><strong>Lecture 1 (Monday) - Agentic AI:</strong> <a href="https://www.youtube.com/watch?v=otLpat5nm3A" target="_blank">Watch Recording</a></li>
+                                <li><strong>Lecture 1 (Wednesday) - Agentic AI:</strong> <a href="http://youtube.com/watch?v=08whgHNfCc8" target="_blank">Watch Recording</a></li>
+                            </ul>
+                        </div>
+                    </div>
+<div class="module-card">
+                        <h3>🌐 Official Links & Orientation</h3>
+                        <div class="task-content">
+                            <ul>
+                                <li><strong>Orientation Recording:</strong> <a href="https://us06web.zoom.us/rec/share/mkhF8djhv74lVNY3u-AW9JmTj2Zl7ptOseixKcbJ6nuw8yOyz2RAJopI4i5KRaFg.FA5rTW_0jlahmJWb?startTime=1740259973000" target="_blank">Watch the recording</a><br>
+                               </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>💡 Learning & Project Ideas</h3>
+                        <div class="task-content">
+                            <ul>
+                                <li><strong>AI Project Inspiration:</strong> <a href="https://ai-in-the-loop--v4cc5yr.gamma.site/" target="_blank">Creative AI project ideas to spark innovation</a></li>
+                                <li><strong>DeepLearning.AI Courses:</strong> <a href="https://www.deeplearning.ai/courses/" target="_blank">Curated by Andrew Ng, with focused 2-hour lessons</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                  
                 </div>
             </div>
         </div>
