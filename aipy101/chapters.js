@@ -121,7 +121,7 @@ const chapters = [
                     <div class="blog-post">
                         <section class="post-section">
                             <h2>Why Learn to Code?</h2>
-                            <p>Artificial Intelligence (AI) is changing the way we work and interact with technology. Today, learning to code is no longer just for software engineers. People in many professions, such as journalism, marketing, business, and administration, find that even a small amount of programming knowledge can make them more effective and productive. This cours introduces Python, a simple and powerful programming language, and explores its role in AI.</p>
+                            <p>Artificial Intelligence (AI) is changing the way we work and interact with technology. Today, learning to code is no longer just for software engineers. People in many professions, such as journalism, marketing, business, and administration, find that even a small amount of programming knowledge can make them more effective and productive. This course introduces Python, a simple and powerful programming language, and explores its role in AI.</p>
                         </section>
 
                         <section class="post-section">
