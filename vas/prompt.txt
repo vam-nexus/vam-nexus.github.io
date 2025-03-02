@@ -1,0 +1,4 @@
+Update my code: I want my application to ask user for name and age, and return number that is equal to <age> to the power of <number of letters in the name>. Add basic assertions.
+
+Build a classic digit recognition system for MNIST dataset using PyTorch. Implement simple Perceptron model. Install required packages (requiremnts.txt), and setup fully working demo that will train and validate model.
+
