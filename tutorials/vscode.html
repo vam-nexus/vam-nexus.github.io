@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSCode Setup Guide - VAM Tutorials</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1f35 0%, #2a2f66 100%);
+            color: white;
+            font-size: 16px;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .navbar {
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 0rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(26, 31, 53, 0.8);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #7dd3fc;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 300px;
+            white-space: nowrap;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: #7dd3fc;
+        }
+
+        .module-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.75rem;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: visible;
+            width: 70vw;
+            max-width: 800px;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .module-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 1rem;
+            color: #7dd3fc;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .module-card .content {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .module-card .content code {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .module-card .content pre {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .navbar-sections {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-sections li {
+            cursor: pointer;
+            color: #7dd3fc;
+            transition: color 0.2s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .navbar-sections li:hover {
+            background-color: rgba(125, 211, 252, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .module-card {
+                width: 90%;
+                margin: 1rem auto;
+            }
+
+            .navbar {
+                width: 95%;
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            .navbar-sections {
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+
+        .tab-container {
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tab-button {
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-button.active {
+            background: #7dd3fc;
+            color: #1a1f35;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .installation-image {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .module-card.intro {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(125, 211, 252, 0.2);
+            box-shadow: 0 4px 20px rgba(125, 211, 252, 0.05);
+        }
+
+        .module-card.intro:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(125, 211, 252, 0.1);
+        }
+
+        .wrap-content {
+            white-space: pre-wrap;       /* Since 2.1 */
+            white-space: -moz-pre-wrap;  /* Mozilla */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            overflow-wrap: break-word;
+            max-width: 100%;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <a href="/" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2L1 12h3v9h6v-6h4v6h6v-9h3L12 2zm0 2.5L18.5 11H17v9h-2v-6H9v6H7v-9H5.5L12 4.5z"/>
+                </svg>
+                VSCode Setup Guide - VAM Tutorials
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul class="navbar-sections">
+                <li><a href="../index.html" style="color: inherit; text-decoration: none;">Home</a></li>
+                <li><a href="../vas/index.html" style="color: inherit; text-decoration: none;">VAS</a></li>
+                <li><a href="index.html" style="color: inherit; text-decoration: none;">Tutorials</a></li>
+            </ul>
+        </nav>
+
+        <div class="main-content">
+            <div class="module-card intro">
+                <h3>📚 Getting Started with Development Tools</h3>
+                <div class="content">
+                    <p>Welcome! To start coding with AI assistance, we need to set up several essential tools. This guide will walk you through installing and configuring:</p>
+                    
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <ol style="margin: 0;">
+                            <li><strong>Python</strong> - The programming language we'll be using (<a href="https://www.python.org/" target="_blank" style="color: #7dd3fc;">python.org</a>)</li>
+                            <li><strong>Visual Studio Code</strong> - Our code editor (<a href="https://code.visualstudio.com/" target="_blank" style="color: #7dd3fc;">code.visualstudio.com</a>)</li>
+                            <li><strong>GitHub Account</strong> - For accessing AI coding assistance (<a href="https://github.com/" target="_blank" style="color: #7dd3fc;">github.com</a>)</li>
+                            <li><strong>GitHub Copilot</strong> - Your AI programming partner (<a href="https://github.com/features/copilot" target="_blank" style="color: #7dd3fc;">Learn more</a>)</li>
+                        </ol>
+                    </div>
+
+                    <p>By the end of this tutorial, you'll have everything needed to start building applications with AI assistance!</p>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🐍 Installing Python</h3>
+                <div class="content">
+                    <p>Before setting up VS Code, let's install Python. Follow the instructions for your operating system:</p>
+                    <p><b>HINT:</b> If you're just starting, we recommend installing the latest stable Python version (3.11 or newer). Make sure to select "Add to PATH" during installation.</p>
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="switchTab(event, 'windows')">Windows</button>
+                            <button class="tab-button" onclick="switchTab(event, 'macos')">macOS</button>
+                            <button class="tab-button" onclick="switchTab(event, 'linux')">Linux</button>
+                        </div>
+
+                        <div id="python-windows" class="tab-content windows-tab active">
+                            <ol>
+                                <li>Visit <a href="https://www.python.org/downloads/" target="_blank" style="color: #7dd3fc;">python.org/downloads</a></li>
+                                <li>Download the latest Python version for Windows</li>
+                                <li>Run the installer and make sure to check:
+                                    <ul>
+                                        <li>"Add Python to PATH"</li>
+                                        <li>"Install launcher for all users"</li>
+                                    </ul>
+                                </li>
+                                <li>Click "Install Now" for a standard installation</li>
+                                <li>Verify installation by opening Command Prompt and typing:
+                                    <pre>python --version</pre>
+                                </li>
+                            </ol>
+                            <img src="img\download_python.jpg" alt="Python installation wizard showing download options" class="installation-image">
+                            <img src="img\verify_python.jpg" alt="Command prompt showing Python version verification" class="installation-image">
+                        </div>
+
+                        <div id="python-macos" class="tab-content macos-tab">
+                            <ol>
+                                <li>Visit <a href="https://www.python.org/downloads/" target="_blank" style="color: #7dd3fc;">python.org/downloads</a></li>
+                                <li>Download the latest Python version for macOS</li>
+                                <li>Open the .pkg installer</li>
+                                <li>Follow the installation wizard</li>
+                                <li>Verify installation by opening Terminal and typing:
+                                    <pre>python3 --version</pre>
+                                </li>
+                            </ol>
+                            <p>Alternatively, use Homebrew:</p>
+                            <pre>brew install python</pre>
+                            <img src="img\download_python.jpg" alt="Python installation wizard showing download options" class="installation-image">
+                        </div>
+
+                        <div id="python-linux" class="tab-content linux-tab">
+                            <p>Most Linux distributions come with Python pre-installed. If not:</p>
+                            <p>Ubuntu/Debian:</p>
+                            <pre>
+sudo apt update
+sudo apt install python3 python3-pip</pre>
+                            <p>Fedora:</p>
+                            <pre>
+sudo dnf update
+sudo dnf install python3</pre>
+                            <p>Verify installation:</p>
+                            <pre>python3 --version</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🛠️ Setting up Visual Studio Code</h3>
+                <div class="content">
+                    <p>Visual Studio Code (VS Code) is a powerful, free code editor that we'll use throughout the program. It offers excellent Python support and integrates perfectly with GitHub Copilot.</p>
+                    
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" onclick="switchTab(event, 'windows')">Windows</button>
+                            <button class="tab-button" onclick="switchTab(event, 'macos')">macOS</button>
+                            <button class="tab-button" onclick="switchTab(event, 'linux')">Linux</button>
+                        </div>
+
+                        <div id="vscode-windows" class="tab-content windows-tab active">
+                            <ol>
+                                <li>Download VS Code from <a href="https://code.visualstudio.com/" target="_blank" style="color: #7dd3fc;">code.visualstudio.com</a></li>
+                                <li>Run the installer (.exe file)</li>
+                                <li>Make sure these options are checked:
+                                    <ul>
+                                        <li>Add "Open with Code" action to Windows Explorer</li>
+                                        <li>Add to PATH</li>
+                                    </ul>
+                                </li>
+                                <li>Install extensions:
+                                    <ul>
+                                        <li>Press Ctrl+Shift+X</li>
+                                        <li>Search and install: Python, Jupyter, GitHub Copilot</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div id="vscode-macos" class="tab-content macos-tab">
+                            <ol>
+                                <li>Download VS Code from <a href="https://code.visualstudio.com/" target="_blank" style="color: #7dd3fc;">code.visualstudio.com</a></li>
+                                <li>Open the downloaded .zip file</li>
+                                <li>Drag Visual Studio Code.app to Applications folder</li>
+                                <li>Install extensions:
+                                    <ul>
+                                        <li>Press Cmd+Shift+X</li>
+                                        <li>Search and install: Python, Jupyter, GitHub Copilot</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p>Alternatively, use Homebrew:</p>
+                            <pre>brew install --cask visual-studio-code</pre>
+                        </div>
+
+                        <div id="vscode-linux" class="tab-content linux-tab">
+                            <p>Ubuntu/Debian:</p>
+                            <pre>
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code</pre>
+                            <p>Install extensions:</p>
+                            <ul>
+                                <li>Press Ctrl+Shift+X</li>
+                                <li>Search and install: Python, Jupyter, GitHub Copilot</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>⚙️ Build your first application with Python and VSCode</h3>
+                <div class="content">
+                    <p>Now it's time to build your first application in VS Code using Python!</p>
+                    <p>Projects in VS Code are organized around folders. Follow these steps:</p>
+                    <ol>
+                        <li>Create a new folder on your computer for your project</li>
+                        <li>In VS Code, go to File > Open Folder (or use the button shown below)</li>
+                        <li>Select your newly created folder</li>
+                    </ol>
+                    <img src="img\vscode_openfolder.jpg" alt="VS Code interface showing how to open a folder" class="installation-image">
+                    <img src="img\vscode_createnewfile.jpg" alt="VS Code interface demonstrating new file creation" class="installation-image">
+                    <p>Once your empty folder is opened, create a new file. You can name it <i>hello_world.py</i></p>
+                    <img src="img\vscode_firstapp1.jpg" alt="VS Code editor showing a simple Python program" class="installation-image">
+                    <p>Add some to your file, like below. Pay attention that at the bottom is your Python environment selector. Use <i>Start</i> button in the top right corner to start your application:</p>
+                    <img src="img\vscode_firstapp2.jpg" alt="VS Code terminal showing program output" class="installation-image">
+
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🤖 Setting up GitHub Copilot</h3>
+                <div class="content">
+                    <p>To activate GitHub Copilot:</p>
+                    <ol>
+                        <li>First, create a GitHub account at <a href="https://github.com/" target="_blank" style="color: #7dd3fc;">github.com</a> if you don't have one yet</li>
+                        <li>Visit <a href="https://github.com/features/copilot" target="_blank" style="color: #7dd3fc;">GitHub Copilot</a> to start your free trial</li>
+                        <li>In VS Code, click the Copilot icon in the sidebar or use Ctrl+Shift+P and type "GitHub Copilot: Sign In"</li>
+                    </ol>
+                    <p>Then, go to VSCode and sign in to your GitHub account:</p>
+                    <img src="img\vscode_github_signin.jpg" alt="GitHub sign-in dialog in VS Code" class="installation-image">
+
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🤖 Build Applications with GitHub Copilot!</h3>
+                <div class="content">
+                    <p>Now that GitHub Copilot is set up, let's see how it can help you write code! Copilot works in two main ways:</p>
+                    
+                    <ul>
+                        <li><b>Inline Suggestions</b> - As you type, Copilot suggests code completions</li>
+                        <li><b>Chat & Edits</b> - Have a conversation with Copilot or let it modify entire files</li>
+                    </ul>
+
+                    <p>Let's try using Copilot Edits - a powerful feature that can modify your code based on natural language descriptions:</p>
+                    
+                    <ol>
+                        <li>Click on the GitHub Copilot icon in the sidebar or press <code>Ctrl+Shift+P</code> and type "Open Copilot"</li>
+                        <li>Select "Open Copilot Edits" from the menu</li>
+                    </ol>
+                    <img src="img\vscode_copilot1.jpg" alt="VS Code interface showing how to access GitHub Copilot" class="installation-image">
+
+                    <p>We'll start with our simple application and ask Copilot to enhance it. Here's an example prompt:</p>
+                    <pre class="wrap-content">Update my code: I want my application to ask the user for their name and age, then calculate a number that is equal to the age raised to the power of the number of letters in their name. Also, add some basic input validation.</pre>
+                    
+                    <img src="img\vscode_copilot2.jpg" alt="GitHub Copilot chat interface with example prompt" class="installation-image">
+                    
+                    <p>After you submit the prompt, Copilot will analyze your request and suggest changes:</p>
+                    <img src="img\vscode_copilot3.jpg" alt="GitHub Copilot suggesting code changes" class="installation-image">
+
+                    <p>Review the suggested changes, then:</p>
+                    <ol>
+                        <li>Click "Accept" if you're happy with the changes</li>
+                        <li>Save the file (<code>Ctrl+S</code>)</li>
+                        <li>Run your enhanced application using the Play button in the top right</li>
+                    </ol>
+                    
+                    <img src="img\vscode_copilot4.jpg" alt="Running the enhanced application with Copilot changes" class="installation-image">
+
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><b>💡 Pro Tips:</b></p>
+                        <ul>
+                            <li>Be specific in your prompts - tell Copilot exactly what you want</li>
+                            <li>Ask for explanations if you don't understand the suggested code</li>
+                            <li>Use comments in your code to guide Copilot's suggestions</li>
+                            <li>Try different prompts if you're not satisfied with the first suggestion</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🤖 Advanced Copilot</h3>
+                <div class="content">
+                    <p>GitHub Copilot is a powerful AI pair programmer that can help you with:</p>
+                    <ul>
+                        <li>Writing new code and completing your lines</li>
+                        <li>Explaining existing code</li>
+                        <li>Generating tests</li>
+                        <li>Fixing bugs</li>
+                        <li>Converting code between languages</li>
+                    </ul>
+                    <p>Pro Tips:</p>
+                    <ul>
+                        <li>Use comments to guide Copilot's suggestions</li>
+                        <li>Press Tab to accept suggestions</li>
+                        <li>Press Ctrl+Enter in comments to get inline suggestions</li>
+                        <li>Use Alt+\ to open Copilot Chat</li>
+                    </ul>
+                    <p>You can do much more with CoPilot! For example you can ask to build advanced models, install new packages and ask to edit multiple files at once. Let's ask CoPilot to build an object detection model from scratch!</p>
+                    <pre class="wrap-content"><p>Build a classic digit recognition system for MNIST dataset using PyTorch. Implement simple Perceptron model. Install required packages (requiremnts.txt), and setup fully working demo that will train and validate model.                </p></pre>
+
+                    <img src="img\vscode_copilot5.jpg" alt="GitHub Copilot generating machine learning code" class="installation-image">
+                </div>  
+            </div>
+
+            <div class="module-card">
+                <h3>📓 Use Jupyter Notebooks with VSCode</h3>
+                <div class="content">
+                    <p>Jupyter Notebooks are perfect for data science and machine learning. They allow you to combine code, text, and visualizations in a single document. Here's how to use them in VS Code:</p>
+
+                    <ol>
+                        <li>First, install Jupyter support:
+                            <pre>pip install jupyter notebook</pre>
+                        </li>
+                        <li>Create a new notebook by either:
+                            <ul>
+                                <li>Pressing Ctrl+Shift+P and typing "Create New Jupyter Notebook"</li>
+                                <li>Clicking the "New File" button and choosing the .ipynb extension</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>GitHub Copilot works in Jupyter Notebooks too!</p>
+
+                    <img src="img/vscode_jupyter1.jpg" alt="Creating a new Jupyter notebook in VS Code" class="installation-image">
+                    <img src="img/vscode_jupyter2.jpg" alt="Jupyter notebook with code and visualization example" class="installation-image">
+
+                    <p>Key notebook controls:</p>
+                    <ul>
+                        <li>Click the "[ ]" button to add a new code cell</li>
+                        <li>Click the "T" button to add a text (markdown) cell</li>
+                        <li>Press Shift+Enter to run a cell</li>
+                        <li>Use the "Select Kernel" button to choose your Python environment</li>
+                    </ul>
+
+                    <p>Here's a simple example to try:</p>
+                    <pre class="wrap-content">
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.plot(x, y)
+plt.title('Simple Sine Wave')
+plt.show()</pre>
+
+                    <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><b>💡 Notebook Tips:</b></p>
+                        <ul>
+                            <li>Use markdown cells to document your code</li>
+                            <li>Variables persist across cells during a session</li>
+                            <li>Use kernel restart to clear all variables</li>
+                            <li>You can export notebooks to Python files or HTML</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-card">
+                <h3>🤖 References</h3>
+                <div class="content">
+                    <ul>
+                        <li><a href="https://code.visualstudio.com/docs/python/python-tutorial" target="_blank" style="color: #7dd3fc;">VS Code Python Tutorial</a></li>
+                        <li><a href="https://docs.github.com/copilot" target="_blank" style="color: #7dd3fc;">GitHub Copilot Documentation</a></li>
+                    </ul>
+                </div>  
+            </div>
+
+        <script>
+            function switchTab(event, platform) {
+                // Get all tab contents and buttons
+                const tabContents = document.getElementsByClassName("tab-content");
+                const tabButtons = document.getElementsByClassName("tab-button");
+                
+                // Remove active class from all tabs and buttons
+                Array.from(tabContents).forEach(tab => {
+                    tab.classList.remove("active");
+                });
+                Array.from(tabButtons).forEach(button => {
+                    button.classList.remove("active");
+                });
+                
+                // Activate all tabs for the selected platform
+                const platformTabs = document.getElementsByClassName(platform + "-tab");
+                Array.from(platformTabs).forEach(tab => {
+                    tab.classList.add("active");
+                });
+                
+                // Activate the clicked button and its siblings
+                const platformButtons = document.querySelectorAll(`button.tab-button:nth-child(${
+                    Array.from(event.currentTarget.parentElement.children).indexOf(event.currentTarget) + 1
+                })`);
+                platformButtons.forEach(button => {
+                    button.classList.add("active");
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>
