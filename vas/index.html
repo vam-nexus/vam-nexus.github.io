@@ -20,7 +20,6 @@
             <ul class="navbar-sections">
                 <li onclick="showWeek('events', this)">Upcoming Events</li>
                 <li onclick="showWeek('week3', this)">Week 3 - Tasks</li>
-                <li onclick="showWeek('week2', this)">Week 2 - Tasks</li>
                 <li onclick="showWeek('pastWeeks', this)">Past Weeks</li>
                 <li onclick="showWeek('resources', this)">Resources</li>
             </ul>
@@ -127,143 +126,97 @@
                         This week we'll focus on setting up a best-practice coding environment, building an MVP, and deploying your first version.</h4>
                     </center>
                     <div class="module-card">
-                        <span class="card-number">1/4</span>
+                        <span class="card-number">1/3</span>
                         <span class="section-label">Week 3</span>
                         <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
-                        <h3>💻 Setup Your Development Environment</h3>
+                        <h3>💻 Setup VSCode/Cursor & Create Your First Python Program</h3>
                         <div class="task-content">
                             <h4>🎯 Goal:</h4>
-                            <p>Set up a professional development environment for your AI project</p>
+                            <p class="highlight-text">Set up your programming environment and create your first Python program.</p>
                             <h4>❓ Why:</h4>
-                            <p>A proper development environment is essential for efficient coding and collaboration.</p>
+                            <p>Learning to set up a proper development environment is the first crucial step in coding. This will help you get comfortable with the tools that professional developers use daily.</p>
+                            <h4>🎬 Relevant Lecture Video:</h4>
+                            <p>Minute 3 to Minute 10 in <a href="https://www.youtube.com/watch?v=YtbKKqoh-Gc" target="_blank">this lecture recording</a></p>
                             <h4>📝 Action Items:</h4>
-                            <ul>
-                                <li>Install one of the following code editors:
-                                    <ul>
-                                        <li>Cursor (Recommended for AI-powered coding)</li>
-                                        <li>VS Code</li>
-                                        <li>Windsurf</li>
-                                    </ul>
-                                </li>
-                                <li>Install Python 3.9 on your system (<a href="https://www.python.org/downloads/" target="_blank">Download Here</a>)</li>
-                                <li>Create a simple Python script (hello.py) that prints "Hello, World!"</li>
-                                <li>Run the script in your terminal or integrated terminal in your code editor</li>
-                                <li>Take a screenshot of the output and upload it to <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> channel #📊｜week-3-outputs</li>
-                                <li>Mark "Yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Week 3 spreadsheet</a></li>
+                            <ol type="I" class="action-list">
+                                <li>⬇️ Download and install <a href="https://code.visualstudio.com/download" target="_blank">VSCode</a> or <a href="https://cursor.sh/" target="_blank">Cursor</a> from their official websites</li>
+                                <li>🖥️ Open the application once installed</li>
+                                <li>📄 Create a new file and save it as "hello_world.py"</li>
+                                <li>🤖 Use the AI Assistant in Cursor (or <a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a> in VSCode) to help you write a fancy "Hello, World!" program that includes your name, perhaps with colors, ASCII art, or animation</li>
+                                <li>▶️ Run the program by clicking the play button or using the terminal command: <code>python hello_world.py</code></li>
+                                <li>📸 Take a screenshot showing your coding environment and the output</li>
+                            </ol>
+                            <h4>📋 Final Deliverable:</h4>
+                            <ul class="deliverable-list">
+                                <li>🖼️ Post your screenshot in the <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">📊｜week-3-outputs</a> channel showing your code and the fancy "Hello World" message running successfully</li>
+                                <li>✅ Type "yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=726243861#gid=726243861" target="_blank">Google Sheets</a> to indicate you've completed this task</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="module-card">
-                        <span class="card-number">2/4</span>
+                        <span class="card-number">2/3</span>
                         <span class="section-label">Week 3</span>
                         <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
-                        <h3>🔄 Setup GitHub & Run Starter Code</h3>
+                        <h3>🔄 Setup Github & Create Your First Web Page with GitHub Pages</h3>
                         <div class="task-content">
                             <h4>🎯 Goal:</h4>
-                            <p>Set up version control and run the starter project code</p>
+                            <p class="highlight-text">Set up GitHub and publish your first web page online.</p>
                             <h4>❓ Why:</h4>
-                            <p>Version control is essential for tracking changes and collaborating with others, while the starter code provides a foundation for your project.</p>
+                            <p>GitHub is the industry standard for code sharing and collaboration. Learning to deploy websites using GitHub Pages gives you a free and easy way to showcase your projects online.</p>
+                            <h4>🎬 Relevant Lecture Video:</h4>
+                            <p>Minute 11 to Minute 25 in <a href="https://www.youtube.com/watch?v=YtbKKqoh-Gc" target="_blank">this lecture recording</a></p>
                             <h4>📝 Action Items:</h4>
-                            <ul>
-                                <li>Create a GitHub account at <a href="https://github.com/signup" target="_blank">GitHub Signup</a> (if you don't have one already)</li>
-                                <li>Set up SSH for GitHub:
-                                    <ol>
-                                        <li>Generate an SSH key: <code>ssh-keygen -t ed25519 -C "your_email@example.com"</code></li>
-                                        <li>Start the SSH agent: <code>eval "$(ssh-agent -s)"</code></li>
-                                        <li>Add your SSH key: <code>ssh-add ~/.ssh/id_ed25519</code></li>
-                                        <li>Copy your public key: <code>cat ~/.ssh/id_ed25519.pub</code></li>
-                                        <li>Add the key to your GitHub account: GitHub → Settings → SSH and GPG keys → New SSH key</li>
-                                    </ol>
-                                </li>
-                                <li>Create your own GitHub repository:
-                                    <ol>
-                                        <li>Go to <a href="https://github.com/new" target="_blank">https://github.com/new</a></li>
-                                        <li>Name your repository (e.g., "my-ai-project" or something related to your idea)</li>
-                                        <li>Set it to Public</li>
-                                        <li>Click "Create repository"</li>
-                                    </ol>
-                                </li>
-                                <li>Clone the starter project repository using SSH:
-                                    <ol>
-                                        <li>Go to <a href="https://github.com/vam-nexus/starter-code" target="_blank">https://github.com/vam-nexus/starter-code</a></li>
-                                        <li>Click the green "Code" button and copy the SSH URL</li>
-                                        <li>In your terminal: <code>git clone git@github.com:vam-nexus/starter-code.git</code></li>
-                                    </ol>
-                                </li>
-                                <li>Copy the starter code to your repository:
-                                    <ol>
-                                        <li>Copy the files from the starter code to your project folder</li>
-                                        <li>Initialize your repository: <code>git init</code></li>
-                                        <li>Add your files: <code>git add .</code></li>
-                                        <li>Commit your files: <code>git commit -m "Initial commit with starter code"</code></li>
-                                        <li>Add your remote: <code>git remote add origin git@github.com:your-username/your-repo-name.git</code></li>
-                                        <li>Push to GitHub: <code>git push -u origin main</code> (or <code>git push -u origin master</code> depending on your default branch)</li>
-                                    </ol>
-                                </li>
-                                <li>Navigate to the project folder and run the main script:
-                                    <code>cd your-repo-name</code>
-                                    <code>python main.py</code>
-                                </li>
-                                <li>Take a screenshot of your github repository and upload it to <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> channel #📊｜week-3-outputs</li>
-                                <li>Mark "Yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Week 3 spreadsheet</a></li>
+                            <ol type="I" class="action-list">
+                                <li>👤 Create a GitHub account if you don't have one: <a href="https://github.com/signup" target="_blank">https://github.com/signup</a></li>
+                                <li>📁 Create a new repository (<a href="https://github.com/new" target="_blank">https://github.com/new</a>) - give it a name related to your app idea</li>
+                                <li>🖥️ Open VSCode/Cursor and create a simple index.html file</li>
+                                <li>🔠 Write basic HTML that introduces your app concept (use the AI Assistant for help)</li>
+                                <li>⬆️ Upload this file to your GitHub repository (<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank">GitHub docs</a>)</li>
+                                <li>🌐 Enable GitHub Pages in your repository settings (Settings → Pages → select main branch): <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank">GitHub Pages docs</a></li>
+                                <li>⏱️ Wait a few minutes for your site to deploy</li>
+                            </ol>
+                            <h4>📋 Final Deliverable:</h4>
+                            <ul class="deliverable-list">
+                                <li>🔗 Share the live link to your GitHub Pages website in the <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">📊｜week-3-outputs</a> channel</li>
+                                <li>🖼️ Include a screenshot of your website</li>
+                                <li>✅ Type "yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=726243861#gid=726243861" target="_blank">Google Sheets</a> to indicate you've completed this task</li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="module-card">
-                        <span class="card-number">3/4</span>
+                        <span class="card-number">3/3</span>
                         <span class="section-label">Week 3</span>
                         <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
-                        <h3>🚀 Build an MVP Using AI-Assisted Code</h3>
+                        <h3>🚀 Setup Huggingface Spaces & Create an Interactive App</h3>
                         <div class="task-content">
                             <h4>🎯 Goal:</h4>
-                            <p>Modify the starter code using AI assistance to create your project MVP with a Gradio interface</p>
+                            <p class="highlight-text">Build a simple proof-of-concept app with Gradio and deploy it on Hugging Face Spaces.</p>
                             <h4>❓ Why:</h4>
-                            <p>Building an MVP with a user interface allows you to quickly test and validate your AI idea.</p>
+                            <p>Hugging Face is a powerful platform for AI applications. This exercise introduces you to creating interactive applications that others can use online without installing anything.</p>
+                            <h4>🎬 Relevant Lecture Video:</h4>
+                            <p>Minute 37 to Minute 48 in <a href="https://www.youtube.com/watch?v=YtbKKqoh-Gc" target="_blank">this lecture recording</a></p>
                             <h4>📝 Action Items:</h4>
-                            <ul>
-                                <li>Modify the starter code using Cursor's or VS Code's AI Assistant to align with your project idea</li>
-                                <li>Verify and fine-tune the code as needed</li>
-                                <li>Integrate Gradio to create a web-based interface for your MVP:
-                                    <ul>
-                                        <li>Install Gradio: <code>pip install gradio</code></li>
-                                        <li>Create a simple Gradio interface for your application</li>
-                                    </ul>
-                                </li>
-                                <li>Run the Gradio application and take a screenshot of it</li>
-                                <li>Upload the screenshot to <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> channel #📊｜week-3-outputs</li>
-                                <li>Mark "Yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Week 3 spreadsheet</a></li>
+                            <ol type="I" class="action-list">
+                                <li>👤 Create a Hugging Face account if you don't have one: <a href="https://huggingface.co/join" target="_blank">https://huggingface.co/join</a></li>
+                                <li>📄 In VSCode/Cursor, create a new file called "main.py"</li>
+                                <li>🤖 Use the AI Assistant to help you write a simple Gradio app (it could be a text classifier, image generator, or calculator) - <a href="https://www.gradio.app/docs/" target="_blank">Gradio docs</a></li>
+                                <li>🧪 Test your app locally to make sure it works</li>
+                                <li>🌐 Create a new Space on Hugging Face (select Gradio as the framework): <a href="https://huggingface.co/spaces/new" target="_blank">https://huggingface.co/spaces/new</a></li>
+                                <li>⬆️ Upload your main.py file and any necessary requirements (<a href="https://huggingface.co/docs/hub/spaces-sdks-gradio" target="_blank">Hugging Face docs</a>)</li>
+                                <li>⏱️ Wait for your app to deploy</li>
+                            </ol>
+                            <h4>📋 Final Deliverable:</h4>
+                            <ul class="deliverable-list">
+                                <li>🔗 Share the live link to your Hugging Face Space in the <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">��｜week-3-outputs</a> channel</li>
+                                <li>🖼️ Include a screenshot of your working app</li>
+                                <li>✅ Type "yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=726243861#gid=726243861" target="_blank">Google Sheets</a> to indicate you've completed this task</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="module-card">
-                        <span class="card-number">4/4</span>
-                        <span class="section-label">Week 3</span>
-                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
-                        <h3>🌐 Deploy on Hugging Face</h3>
-                        <div class="task-content">
-                            <h4>🎯 Goal:</h4>
-                            <p>Deploy your MVP on Hugging Face Spaces for public access</p>
-                            <h4>❓ Why:</h4>
-                            <p>Deployment makes your application accessible to users and stakeholders, allowing for real-world testing and feedback.</p>
-                            <h4>📝 Action Items:</h4>
-                            <ul>
-                                <li>Create an account on <a href="https://huggingface.co/" target="_blank">Hugging Face</a></li>
-                                <li>Follow the steps to deploy your Gradio app:
-                                    <ul>
-                                        <li>Push your project to a GitHub repository</li>
-                                        <li>Create a new Hugging Face Space and select Gradio as the framework</li>
-                                        <li>Connect your repository or upload your project manually</li>
-                                        <li>Deploy your app and obtain the live URL</li>
-                                    </ul>
-                                </li>
-                                <li>Share the live URL in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> channel #📊｜week-3-outputs</li>
-                                <li>Mark "Yes" in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Week 3 spreadsheet</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div id="week2" style="display: none;">
                     <center>
@@ -371,6 +324,112 @@
                     </div>
                 </div>
                 <div id="pastWeeks" style="display: none;">
+                    <center>
+                    <h2 style="color: white; width: 80%; text-align: left;">Week 2 - Tasks (Deadline Sunday, March 10th)</h2>
+                    <h4 style="color: white; width: 80%; text-align: left;">
+                        This week we'll focus on structuring and presenting your AI idea effectively.</h4>
+                    </center>
+                    <div class="module-card">
+                        <span class="card-number">1/4</span>
+                        <span class="section-label">Week 2</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🎯 Create Your 5-Minute Idea Slides</h3>
+                        <div class="task-content">
+                            <h4>🎯 Goal:</h4>
+                            <p>Create a clear, structured presentation of your AI idea in 5 slides</p>
+                            <h4>❓ Why:</h4>
+                            <p>A well-structured presentation helps turn AI sparks into real, actionable ideas that others can understand and support.</p>
+                            <h4>📝 Action Items:</h4>
+                            <ul>
+                                <li>Create 5 slides following this structure:
+                                    <ol>
+                                        <li><strong>Motivation:</strong> What are we doing?</li>
+                                        <li><strong>Why:</strong> What's broken today & why does your app fix it?</li>
+                                        <li><strong>How:</strong> Process flow from input to AI magic to output</li>
+                                        <li><strong>Use Cases:</strong> Who benefits most & how will they use it?</li>
+                                        <li><strong>Landing Page:</strong> First version of your app's homepage</li>
+                                    </ol>
+                                </li>
+                                <li>You can use <a href="https://docs.google.com/presentation/d/18-O8cRR-btImzuk1T7SpierbJnZIznzpoOSpYZNzFVU/edit?usp=sharing" target="_blank">these slides</a> as a template</li>
+                                <li>If possible, register your presentation slot in the <a href="https://docs.google.com/spreadsheets/d/1xDbIYazU8OMb1NTsVXYt7pGa985zHZSMNCyCPvrC5Os/edit?gid=0#gid=0" target="_blank">Show & Tell Schedule</a></li>
+                                <li>Share your slides in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #🎯｜week-2-outputs</li>
+                                <li>Update to "Yes" for Task 1 in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Excel Sheet</a></li>
+                                <li>(Optional) Register to the luma <a href="https://lu.ma/fgxe7kg3" target="_blank" class="rsvp-button">RSVP Here</a>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">2/4</span>
+                        <span class="section-label">Week 2</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>📊 Data Collection Interface</h3>
+                        <div class="task-content">
+                            <h4>🎯 Goal:</h4>
+                            <p>Create a data collection interface for your AI idea using Gradio</p>
+                            <h4>❓ Why:</h4>
+                            <p>A well-structured data interface helps visualize and validate your training data, ensuring your AI model will learn from quality examples.</p>
+                            <h4>📝 Action Items:</h4>
+                            <ul>
+                                <li>Complete the data collection interface exercise (Module 1) in <a href="https://colab.research.google.com/drive/1V5d_-HdWtOyiORUM9kNpp4NoGmcLqsan?usp=sharing" target="_blank">this Google Colab</a></li>
+                                <li>Share a screenshot of your interface in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #🎯｜week-2-outputs</li>
+                                <li>Update to "Yes" for Task 2 in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Excel Sheet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">3/4</span>
+                        <span class="section-label">Week 2</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>🔍 Prompt XRay Interface</h3>
+                        <div class="task-content">
+                            <h4>🎯 Goal:</h4>
+                            <p>Create an interactive interface for testing and visualizing AI prompts with your dataset</p>
+                            <h4>❓ Why:</h4>
+                            <p>A prompt testing interface helps you refine and validate your AI prompts, ensuring they produce the desired outputs consistently across your dataset.</p>
+                            <h4>📝 Action Items:</h4>
+                            <ul>
+                                <li>Complete Module 2 (Prompt XRay Interface) in <a href="https://colab.research.google.com/drive/1V5d_-HdWtOyiORUM9kNpp4NoGmcLqsan?usp=sharing" target="_blank">this Google Colab</a></li>
+                                <li>Tasks include:
+                                    <ol>
+                                        <li>Set up your Together API key</li>
+                                        <li>Choose an appropriate LLM model</li>
+                                        <li>Customize the dataset and prompt template for your use case</li>
+                                    </ol>
+                                </li>
+                                <li>Share a screenshot of your working interface in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #🎯｜week-2-outputs</li>
+                                <li>Update to "Yes" for Task 3 in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Excel Sheet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="module-card">
+                        <span class="card-number">4/4</span>
+                        <span class="section-label">Week 2</span>
+                        <input type="checkbox" class="task-checkbox" onchange="toggleComplete(this)">
+                        <h3>📊 LLM Evaluation Framework</h3>
+                        <div class="task-content">
+                            <h4>🎯 Goal:</h4>
+                            <p>Create an evaluation framework to assess and compare LLM outputs against expected results</p>
+                            <h4>❓ Why:</h4>
+                            <p>A robust evaluation framework helps ensure your AI system produces reliable, high-quality outputs that meet your specific requirements.</p>
+                            <h4>📝 Action Items:</h4>
+                            <ul>
+                                <li>Complete Module 3 (LLM Evaluation Framework) in <a href="https://colab.research.google.com/drive/1V5d_-HdWtOyiORUM9kNpp4NoGmcLqsan?usp=sharing" target="_blank">this Google Colab</a></li>
+                                <li>Tasks include:
+                                    <ol>
+                                        <li>Modify the evalution criteria in the prompt for your usecase</li>
+                                    </ol>
+                                </li>
+                                <li>Share a screenshot of your working evaluation interface (showin the llm score) in <a href="https://discord.com/channels/1342145014628880436/1342145014628880439" target="_blank">Discord</a> at the channel #🎯｜week-2-outputs</li>
+                                <li>Update to "Yes" for Task 4 in the <a href="https://docs.google.com/spreadsheets/d/1uxjXTjgNw8O-tXzTEczzi0IqpEg5OafEJ81aodHFP8Y/edit?gid=798522577#gid=798522577" target="_blank">Excel Sheet</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <hr style="border: 1px solid rgba(255, 255, 255, 0.1); margin: 40px 0;">
+                    
                     <center>
                     <h2 style="color: white; width: 80%; text-align: left;">Week 1 - Tasks (Deadline Sunday, March 3rd)</h2>
                     <h4 style="color: white; width: 80%; text-align: left;">

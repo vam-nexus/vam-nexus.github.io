@@ -178,24 +178,25 @@ body {
         }
 
         .module-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
             border-radius: 16px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.2s ease;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
             position: relative;
             overflow: visible;
             width: 40vw;
             box-sizing: border-box;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
             margin-left: auto;
             margin-right: auto;
         }
 
         .module-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(125, 211, 252, 0.3);
         }
 
         .module-card.completed {
@@ -209,13 +210,21 @@ body {
         }
 
         .module-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin: 0 0 1rem;
+            margin: 0 0 1.5rem;
             color: #7dd3fc;
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .module-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: #e2e8f0;
         }
 
         .card-number {
@@ -265,30 +274,76 @@ body {
         }
 
         .task-content {
-            color: #ffffff;
+            color: #e2e8f0;
             font-size: 1rem;
-            line-height: 1.5;
+            line-height: 1.6;
             transition: all 0.2s ease;
             gap: 1rem;
         }
 
+        .task-content p {
+            margin: 0.5rem 0 1rem;
+            color: #cbd5e1;
+        }
+
+        .task-content ul, .task-content ol {
+            padding-left: 1.5rem;
+            margin: 0.75rem 0;
+        }
+
         .task-content ul {
-            flex: 1;
-            min-width: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            list-style-type: none;
+        }
+
+        .task-content ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .task-content ul li::before {
+            content: "•";
+            color: #7dd3fc;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -0.1rem;
+        }
+
+        .task-content ol li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+        }
+
+        .task-content ul ul, .task-content ol ol, .task-content ul ol, .task-content ol ul {
+            margin: 0.5rem 0 0.5rem 0.5rem;
+        }
+
+        .task-content ul ul li::before {
+            content: "◦";
+            color: #94a3b8;
         }
 
         .task-content a {
             color: #7dd3fc;
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: all 0.2s ease;
+            border-bottom: 1px dotted rgba(125, 211, 252, 0.4);
+            padding-bottom: 1px;
         }
 
         .task-content a:hover {
             color: #93dcfd;
-            text-decoration: underline;
+            border-bottom: 1px solid rgba(125, 211, 252, 0.8);
+        }
+
+        .task-content code {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #7dd3fc;
         }
 
         @media (max-width: 1024px) {

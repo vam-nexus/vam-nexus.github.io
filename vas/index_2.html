@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vancouver AI Space</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e2f;
+            color: #fff;
+        }
+        header {
+            background-color: #2c2c3e;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            font-size: 2em;
+            font-weight: bold;
+            border-bottom: 2px solid #4CAF50;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 1em;
+        }
+        .sidebar, .right-sidebar {
+            width: 20%;
+            background-color: #2c2c3e;
+            padding: 1em;
+            border-radius: 10px;
+            margin: 0 1em;
+            border-top: 2px solid #4CAF50;
+        }
+        .main-content {
+            flex: 1;
+            padding: 1em;
+            background-color: #2c2c3e;
+            border-radius: 10px;
+            margin: 0 1em;
+        }
+        .module-card {
+            background-color: #3a3a4f;
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3 {
+            margin: 0 0 0.5em 0;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Vancouver AI Space
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Course Content</h2>
+            <p><a href="#" onclick="showWeek(0)">Week 0 - Warmup</a></p>
+            <p><a href="#" onclick="showWeek(1)">Week 1 - Tasks</a></p>
+            <p><a href="#" onclick="showWeek(2)">Week 2 - Coming Soon</a></p>
+            <!-- Add more weeks as needed -->
+        </div>
+        <div class="main-content" id="main-content">
+            <div id="week0" style="display: none;">
+                <h2>Week 0 Warmup</h2>
+                <div class="module-card">
+                    <h3>Getting Started</h3>
+                    <p>Setup your development environment</p>
+                </div>
+            </div>
+            <div id="week1">
+                <h2>Week 1 Tasks</h2>
+                <div class="module-card">
+                    <h3>Python Warm-up</h3>
+                    <p>Complete <a href="#">WarmUp 1</a> & <a href="#">WarmUp 2</a></p>
+                </div>
+                <div class="module-card">
+                    <h3>Idea Feedback</h3>
+                    <p>Review and provide feedback on 3-5 ideas in #share-your-ideas</p>
+                </div>
+                <!-- Add more tasks as needed -->
+            </div>
+            <div id="week2" style="display: none;">
+                <h2>Week 2</h2>
+                <div class="module-card">
+                    <h3>Coming Soon</h3>
+                    <p>Content will be available shortly</p>
+                </div>
+            </div>
+        </div>
+        <div class="right-sidebar">
+            <h2>Important Dates</h2>
+            <p>Week 1 Start: February 22nd, 2024</p>
+            <p>Week 1 Tasks Due: February 25th, 2024</p>
+            <p>Final Project Due: April 4th, 2024</p>
+        </div>
+    </div>
+
+    <script>
+        function showWeek(weekNum) {
+            // Hide all weeks
+            document.querySelectorAll('[id^="week"]').forEach(week => {
+                week.style.display = 'none';
+            });
+            
+            // Show selected week
+            document.getElementById('week' + weekNum).style.display = 'block';
+        }
+    </script>
+</body>
+</html>

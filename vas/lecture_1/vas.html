@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vancouver AI Space</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #1a1f35 0%, #2a2f66 100%);
+            color: #e0e0e0;
+        }
+
+        .header {
+            padding: 15px 20px;
+            background-color: #1f1f1f;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 250px 1fr 250px;
+            gap: 20px;
+            padding: 20px;
+            flex: 1;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .sidebar, .dates-panel {
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-y: auto;
+            height: 100%;
+        }
+
+        .sidebar h2, .dates-panel h2 {
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .main-content {
+            padding: 0 20px 20px 20px;
+            background-color: #2c2c2c;
+            border-radius: 12px;
+            overflow-y: auto;
+            height: calc(100vh - 90px);
+            margin-bottom: 20px;
+        }
+
+        .tasks-container {
+            overflow-y: scroll;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .tasks-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .tasks-container::-webkit-scrollbar-track {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .tasks-container::-webkit-scrollbar-thumb {
+            background: #7dd3fc;
+            border-radius: 4px;
+        }
+
+        .tasks-container::-webkit-scrollbar-thumb:hover {
+            background: #4f78ff;
+        }
+
+        .main-header {
+            margin-bottom: 20px;
+            background-color: #1f1f1f;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .main-header h1 {
+            color: #7dd3fc;
+            font-size: 24px;
+        }
+
+        .task-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #2a3b5f;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .task-box:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .task-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #7dd3fc;
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 0;
+            position: relative;
+            transition: background-color 0.2s;
+            cursor: pointer;
+        }
+
+        .task-content h3 {
+            color: #7dd3fc;
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .task-content p {
+            color: #cfd8e3;
+            margin: 5px 0 0 0;
+        }
+
+        .task-box.completed {
+            opacity: 0.7;
+        }
+
+        .task-box.completed .task-checkbox {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .task-box.completed .task-checkbox::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .task-box.completed .task-content h3,
+        .task-box.completed .task-content p {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .week-link {
+            display: block;
+            padding: 10px 20px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            border-radius: 8px;
+        }
+
+        .week-link:hover {
+            background-color: #444;
+        }
+
+        .week-link.active {
+            background-color: #7dd3fc;
+            color: white;
+        }
+
+        a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Banner -->
+    <header class="header">
+        <h1>Vancouver AI Space</h1>
+    </header>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Left Sidebar -->
+        <nav class="sidebar">
+            <h2>Course Content</h2>
+            <div>
+                <a href="#" class="week-link" data-week="0">Week 0</a>
+            </div>
+            <div>
+                <a href="#" class="week-link" data-week="1">Week 1</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="main-header">
+                <h1>Week 1 Tasks</h1>
+            </div>
+
+            <div class="outcome-box">
+                <h2>Outcome and Submission</h2>
+                <p>🚀🚀 Woohoo! Week 1 Tasks Released! (Due Sunday)</p>
+                <p>📝 Overview</p>
+                <p>These tasks will help you build essential skills for creating state-of-the-art AI-powered apps. As you complete each one:</p>
+                <div class="checkmark">Update the submission sheet: Google Sheet</div>
+                <div class="checkmark">Share your outputs in ✨ | week-1-outputs</div>
+            </div>
+
+            <div class="tasks-container">
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>1️⃣ Warm-up with Python 🐍</h3>
+                        <p>Complete WarmUp 1 & WarmUp 2 here: <a href="https://codingbat.com/python?utm_source=chatgpt.com" target="_blank">CodingBat Python</a></p>
+                    </div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>2️⃣ Give feedback on ideas 💡</h3>
+                        <p>Review and provide feedback on 3-5 ideas in ⁠💡｜share-your-ideas</p>
+                    </div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>3️⃣ Analyze the Titanic Dataset 🚢</h3>
+                        <p>Use ChatGPT to address Exercise 32: <a href="https://colab.research.google.com/drive/1Zb2KyUfqgtsjMfJkJ7JjWCQKQSiRIkI4?usp=sharing" target="_blank">Colab Notebook</a></p>
+                    </div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>4️⃣ Share your journey! 🌎</h3>
+                        <p>Post on LinkedIn that you've started this program! ❤️<br>
+                        Tag #VAM & mention us: <a href="https://www.linkedin.com/company/vancouveraimeetup" target="_blank">Vancouver AI Meetup</a></p>
+                    </div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>5️⃣ Build Your Own AI Chatbot 🤖</h3>
+                        <p>Complete Task 4: Create your own Specialized Chatbot<br>
+                        <a href="https://colab.research.google.com/drive/1nV5txjioTE2-6WszKBIBkMnSb0Tz7a3Y?usp=sharing" target="_blank">Colab Notebook</a></p>
+                    </div>
+                </div>
+
+                <div class="task-box">
+                    <div class="task-checkbox"></div>
+                    <div class="task-content">
+                        <h3>6️⃣ Develop an Email Processing System ✉️</h3>
+                        <p>Complete Task: Create your own Email Processing System<br>
+                        <a href="https://colab.research.google.com/drive/1bDpdyUE8CHESJ94iYgKws-U903SktfH8#scrollTo=44d498da" target="_blank">Colab Notebook</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="dates-panel">
+            <h2>Important Dates</h2>
+            <div class="special-events">
+                <h3>Special Events</h3>
+                <ul>
+                    <li>
+                        <strong>March 7, 2024 5:30PM</strong>
+                        <div>Presenting Your Idea Day</div>
+                        <a href="https://lu.ma/fgxe7kg3" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>April 22, 2024 5:30PM</strong>
+                        <div>Final Presentation Demo Day</div>
+                        <a href="https://lu.ma/xe31ibzc" target="_blank">RSVP Here (Free with coupon: MF7PD0)</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="recurring-events">
+                <h3>Week 1 Events</h3>
+                <ul>
+                    <li>
+                        <strong>Mondays 5:30-6:30PM</strong>
+                        <div>Building Agentic AI Lecture</div>
+                        <a href="https://lu.ma/37dfdxsa" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>Wednesdays 5:30-6:30PM</strong>
+                        <div>Building Agentic AI Lecture (Repeat)</div>
+                        <a href="https://lu.ma/wylg6lor" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>Tuesdays 5:30-7:00PM</strong>
+                        <div>AI & Chill Co-working (Online/In-person)</div>
+                        <a href="https://lu.ma/eca0q9wp" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>Thursdays 5:30-7:00PM</strong>
+                        <div>AI & Chill Co-working (Online/In-person)</div>
+                        <a href="https://lu.ma/l4w4rd94" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>Saturdays 11:00AM-12:15PM</strong>
+                        <div>Online Office Hours</div>
+                        <a href="https://lu.ma/535m9p4m" target="_blank">RSVP Here</a>
+                    </li>
+                    <li>
+                        <strong>Saturdays 5:30-9:00PM</strong>
+                        <div>Boardgames & Chill</div>
+                        <a href="https://lu.ma/mzqvilsn" target="_blank">RSVP Here</a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const weekLinks = document.querySelectorAll('.week-link');
+            const mainContent = document.querySelector('.main-content');
+
+            const contentMap = {
+                '0': `
+                    <div class="main-header">
+                        <h1>Week 0 Tasks</h1>
+                    </div>
+
+                    <div class="outcome-box">
+                        <h2>Outcome and Submission</h2>
+                        <p>🚀🚀 Welcome to Week 0! Let's get started with some warm-up tasks.</p>
+                        <p>📝 Overview</p>
+                        <p>These initial tasks will help you get familiar with AI tools and start brainstorming your project ideas.</p>
+                        <p>Share your outputs in #🏋｜week-0-warmup</p>
+                        <div style="margin-top: 20px;">
+                            <div class="task-box" style="margin-bottom: 0;">
+                                <div class="task-checkbox"></div>
+                                <div class="task-content">
+                                    <p style="margin: 0;">Update the Excel Sheet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tasks-container">
+                        <div class="task-box">
+                            <div class="task-checkbox"></div>
+                            <div class="task-content">
+                                <h3>1️⃣ Build a Site with v0 🛠️</h3>
+                                <p>Build a site (like your landing page) with an idea prompt using <a href="https://v0.dev/" target="_blank">v0</a><br>
+                                Share a screenshot in #🏋｜week-0-warmup</p>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <div class="task-checkbox"></div>
+                            <div class="task-content">
+                                <h3>2️⃣ Share Your Ideas 🎉</h3>
+                                <p>Share a few ideas you are considering in #💡｜share-your-ideas<br>
+                                (Check the channel for examples)</p>
+                            </div>
+                        </div>
+
+                        <div class="task-box">
+                            <div class="task-checkbox"></div>
+                            <div class="task-content">
+                                <h3>3️⃣ Prompt Engineering Solutions 🧙‍♂️</h3>
+                                <p>Write cool prompt engineering solutions to the exercises here:<br>
+                                <a href="https://colab.research.google.com/drive/1nt33w_syUA0rGfoGNe1BNO92wWZXWe4G?usp=sharing" target="_blank">Colab Notebook</a><br>
+                                Share them in #🏋｜week-0-warmup</p>
+                            </div>
+                        </div>
+                    </div>`,
+                '1': mainContent.innerHTML // Week 1 content
+            };
+
+            weekLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    weekLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const weekContent = contentMap[this.dataset.week];
+                    if (weekContent) {
+                        mainContent.innerHTML = weekContent;
+                    }
+                });
+            });
+
+            // Add task completion functionality
+            const taskBoxes = document.querySelectorAll('.task-box');
+            
+            // Load completed states from localStorage
+            const completedTasks = JSON.parse(localStorage.getItem('completedTasks') || '{}');
+            
+            taskBoxes.forEach((box, index) => {
+                // Restore completed state
+                if (completedTasks[index]) {
+                    box.classList.add('completed');
+                }
+                
+                const checkbox = box.querySelector('.task-checkbox');
+                checkbox.addEventListener('click', function(e) {
+                    box.classList.toggle('completed');
+                    
+                    // Save state to localStorage
+                    completedTasks[index] = box.classList.contains('completed');
+                    localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+                });
+            });
+        });
+    </script>
+</body>
+</html>
