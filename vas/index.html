@@ -172,7 +172,28 @@
                                 <li>📁 Create a new repository (<a href="https://github.com/new" target="_blank">https://github.com/new</a>) - give it a name related to your app idea</li>
                                 <li>🖥️ Open VSCode/Cursor and create a simple index.html file</li>
                                 <li>🔠 Write basic HTML that introduces your app concept (use the AI Assistant for help)</li>
-                                <li>⬆️ Upload this file to your GitHub repository (<a href="https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository" target="_blank">GitHub docs</a>)</li>
+                                <li>⬆️ Synchronize your local files on Cursor/VSCode with GitHub using one of these methods:
+                                    <ul>
+                                        <li><strong>Option A: GitHub Desktop</strong> (Beginner-friendly)
+                                            <ol>
+                                                <li>Download and install <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a></li>
+                                                <li>Clone your repository to your local machine</li>
+                                                <li>Add your files to the local repository folder</li>
+                                                <li>Commit your changes and push to GitHub</li>
+                                            </ol>
+                                        </li>
+                                        <li><strong>Option B: Git Command Line</strong> (Advanced)
+                                            <ol>
+                                                <li>Set up SSH for GitHub (recommended for security): <a href="https://medium.com/@kyledeguzmanx/quick-step-by-step-guide-to-generating-an-ssh-key-in-github-d3c6f7e185bb" target="_blank">GitHub SSH Setup Guide</a></li>
+                                                <li>Clone your repository: <code>git clone git@github.com:yourusername/your-repo.git</code></li>
+                                                <li>Add your files to the repository folder</li>
+                                                <li>Stage changes: <code>git add .</code></li>
+                                                <li>Commit changes: <code>git commit -m "Initial commit"</code></li>
+                                                <li>Push to GitHub: <code>git push origin main</code></li>
+                                            </ol>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li>🌐 Enable GitHub Pages in your repository settings (Settings → Pages → select main branch): <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank">GitHub Pages docs</a></li>
                                 <li>⏱️ Wait a few minutes for your site to deploy</li>
                             </ol>
